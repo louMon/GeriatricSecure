@@ -1,0 +1,26 @@
+<div class="sidebar sical-sidebar">
+  <div class="logo sical-sidebar-logo">
+    <a href="/" class="simple-text">
+      Centro de Salud
+    </a>
+  </div>
+  <div class="logo logo-mini sical-sidebar-mini-logo">
+    <a href="/" class="simple-text">
+      Tu Salud
+    </a>
+  </div>
+  
+  <div class="sidebar-wrapper sical-sidebar-wrapper">
+    <ul class="nav flex-column">
+      <% current_user.role.menu_actions.each do |menu| %>
+        <li class="d-flex flex-column <%= @controller ==  menu_action.menu.controller_name ? "active" : "" %>">
+          <a class="nav-link" href= "<%= '/' + menu_action.menu.controller_name %>" >
+            <i class="nav-icon <%= menu_action.menu.icon %>"></i>
+            <p><%= menu_action.menu.navigation_name %></p>
+          </a>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+</div>
