@@ -1,29 +1,50 @@
 <p id="notice"><%= notice %></p>
 
-<h1>People</h1>
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+      <h2>Personas</h2>
+  </div>
+  <div class="col-lg-2">
 
-<table>
-  <thead>
-    <tr>
-      <th>Dni</th>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  </div>
+</div>
 
-  <tbody>
-    <% @people.each do |person| %>
-      <tr>
-        <td><%= person.dni %></td>
-        <td><%= person.name %></td>
-        <td><%= link_to 'Show', person %></td>
-        <td><%= link_to 'Edit', edit_person_path(person) %></td>
-        <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Border Table </h5>
+            </div>
+            <div class="ibox-content">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>DNI</th>
+                    <th>Nombre Completo</th>
+                    <th colspan="3">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @people.each do |person| %>
+                    <tr>
+                      <td><%= person.dni %></td>
+                      <td><%= person.name %></td>
+                      <td><%= link_to 'Mostrar', person %></td>
+                      <td><%= link_to 'Editar', edit_person_path(person) %></td>
+                      <td><%= link_to 'Eliminar', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+        </div>
+    </div>
+  </div>
+  <%= link_to 'Nuevo Usuario', new_person_path %>
+</div>
 
-<br>
 
-<%= link_to 'New Person', new_person_path %>
+
+
+
