@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  idpathology: MyText
+  cie10_code: MyText
+  pathology_name: MyText
+  description: MyText
+
+two:
+  idpathology: MyText
+  cie10_code: MyText
+  pathology_name: MyText
+  description: MyText

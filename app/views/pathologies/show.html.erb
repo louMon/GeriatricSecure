@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Idpathology:</strong>
+  <%= @pathology.idpathology %>
+</p>
+
+<p>
+  <strong>Cie10 code:</strong>
+  <%= @pathology.cie10_code %>
+</p>
+
+<p>
+  <strong>Pathology name:</strong>
+  <%= @pathology.pathology_name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @pathology.description %>
+</p>
+
+<%= link_to 'Edit', edit_pathology_path(@pathology) %> |
+<%= link_to 'Back', pathologies_path %>
