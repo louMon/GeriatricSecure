@@ -1,14 +1,81 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Dni:</strong>
-  <%= @person.dni %>
-</p>
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+      <h2>Paciente N<%= @person.id %></h2>
+  </div>
+  <div class="col-lg-2">
 
-<p>
-  <strong>Name:</strong>
-  <%= @person.name %>
-</p>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_person_path(@person) %> |
-<%= link_to 'Back', people_path %>
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+      <div class="col-lg-12">
+          <div class="ibox float-e-margins">
+              <div class="ibox-title">
+                  <h5>Datos Generales del Paciente</h5>
+              </div>
+              <div class="ibox-content">
+                  <form method="get" class="form-horizontal">
+                      <div class="form-group"><label class="col-sm-2 control-label">Nombre Completo</label>
+                          <div class="col-sm-10"><input type="text" class="form-control" value="<%= @person.name %>"></div>
+                      </div>
+                      <div class="form-group"><label class="col-sm-2 control-label">DNI</label>
+                          <div class="col-sm-10"><input type="text" class="form-control" value="<%= @person.dni %>"></div>
+                      </div>
+                      <div class="form-group"><label class="col-sm-2 control-label">Fecha de Nacimiento</label>
+                          <div class="col-sm-10 input-group date" id="data_1">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="17/09/1962">
+                          </div>
+                      </div>
+                      <div class="form-group"><label class="col-sm-2 control-label">Direccion</label>
+                          <div class="col-sm-10"><input type="text" class="form-control" value="Calle Carlos Lopez Aldana 130, La Victoria">
+                          </div>
+                      </div>
+                      <div class="form-group"><label class="col-sm-2 control-label">Telefono</label>
+                          <div class="col-sm-10"><input type="text" class="form-control" value="4723681">
+                          </div>
+                      </div>
+                      <div class="form-group"><label class="col-sm-2 control-label">Correo Electronico</label>
+                          <div class="col-sm-10"><input type="text" class="form-control" value="correo@gmail.com">
+                          </div>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+      <div class="col-lg-12">
+          <div class="ibox float-e-margins">
+              <div class="ibox-title">
+                  <h5>Datos Relacionados con las Citas del Paciente</h5>
+              </div>
+              <div class="ibox-content">
+                  <form method="get" class="form-horizontal">
+                      <div class="form-group"><label class="col-sm-2 control-label">Fecha de Ultima Cita</label>
+                          <div class="col-sm-7 input-group date" id="data_1">
+                              <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="10/08/2018">
+                          </div>
+                          <div class="input-group">
+                            <input type="text" class="form-control"> 
+                                <span class="input-group-addon"> 
+                                  <button type="button" class="btn btn-info">Ver Historia Clinica</button> 
+                                </span>
+                          </div>
+                      </div>
+                      <div class="hr-line-dashed"></div>
+                      <div class="form-group">
+                          <div class="col-sm-4 col-sm-offset-2">
+                              <button class="btn btn-white" type="submit"><%= link_to 'Regresar', people_path %></button>
+                              <button class="btn btn-primary" type="submit"><%= link_to 'Editar', edit_person_path(@person) %></button>
+                          </div>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
