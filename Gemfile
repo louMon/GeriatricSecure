@@ -65,3 +65,9 @@ gem 'jquery-peity-rails', '~> 3.2'
 gem 'jquery-slimscroll-rails'
 
 gem 'autoprefixer-rails'
+
+#Flexible authentication solution for Rails with Warden
+gem 'devise', '~> 4.3'
+
+#Great Ruby dubugging companion: pretty print Ruby objects to visualize their structure. Supports custom object formatting via plugins
+gem 'awesome_print', '~> 1.7'

@@ -1,12 +1,5 @@
 Rails.application.routes.draw do
-  get 'menus/index'
-
-  get 'menus/new'
-
-  get 'menus/show'
-
-  get 'menus/edit'
-
+  resources :menus
   resources :pathologies
   resources :people
   root 'people#index'
