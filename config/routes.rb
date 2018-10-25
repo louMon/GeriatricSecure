@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     get "login", to: "devise/sessions#new"
     get "logout", to: "devise/sessions#destroy"
     authenticated :usuario do
-      root 'dashboard#index'
+      root 'people#index'
     end
 
     unauthenticated do
