@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nombres: MyText
+  apellidos: MyText
+  dni: MyText
+  fecha_nacimiento: 2018-10-24 20:31:57
+  genero: MyText
+  correo_electronico: MyText
+  estado: 1
+  telefono: MyText
+  nombre_usuario: MyText
+  contrasenha: MyText
+  rol: one
+
+two:
+  nombres: MyText
+  apellidos: MyText
+  dni: MyText
+  fecha_nacimiento: 2018-10-24 20:31:57
+  genero: MyText
+  correo_electronico: MyText
+  estado: 1
+  telefono: MyText
+  nombre_usuario: MyText
+  contrasenha: MyText
+  rol: two

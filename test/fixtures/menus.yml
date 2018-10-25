@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nombre: MyText
+  permiso_ver: false
+  permiso_agregar: false
+  permiso_editar: false
+  disponible_paciente: false
+  icon: MyText
+
+two:
+  nombre: MyText
+  permiso_ver: false
+  permiso_agregar: false
+  permiso_editar: false
+  disponible_paciente: false
+  icon: MyText

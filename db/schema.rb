@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181005234335) do
+ActiveRecord::Schema.define(version: 20181025013157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "menus", force: :cascade do |t|
+    t.text "nombre"
+    t.boolean "permiso_ver"
+    t.boolean "permiso_agregar"
+    t.boolean "permiso_editar"
+    t.boolean "disponible_paciente"
+    t.text "icon"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "pathologies", force: :cascade do |t|
     t.text "idpathology"
@@ -31,4 +42,33 @@ ActiveRecord::Schema.define(version: 20181005234335) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "rols", force: :cascade do |t|
+    t.text "nombre"
+    t.text "descripcion"
+    t.integer "estado"
+    t.bigint "menu_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["menu_id"], name: "index_rols_on_menu_id"
+  end
+
+  create_table "usuarios", force: :cascade do |t|
+    t.text "nombres"
+    t.text "apellidos"
+    t.text "dni"
+    t.datetime "fecha_nacimiento"
+    t.text "genero"
+    t.text "correo_electronico"
+    t.integer "estado"
+    t.text "telefono"
+    t.text "nombre_usuario"
+    t.text "contrasenha"
+    t.bigint "rol_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rol_id"], name: "index_usuarios_on_rol_id"
+  end
+
+  add_foreign_key "rols", "menus"
+  add_foreign_key "usuarios", "rols"
 end
