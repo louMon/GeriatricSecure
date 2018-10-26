@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'usuario/edit'
-
   devise_for :usuarios
     devise_scope :usuario do
       get "signup", to: "devise/registrations#new"
@@ -17,6 +15,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   end
 
+  get 'usuario/edit'
 
   get 'citum/index'
 

@@ -26,6 +26,7 @@
                     <th>Especialidad</th>
                     <th>Dia de la Cita</th>
                     <th>Horario de la Cita</th>
+                    <th>Nombre del Paciente</th>
                     <th colspan="3">Acciones</th>
                   </tr>
                 </thead>
@@ -33,12 +34,11 @@
                   <% @cita.each do |citum| %>
                     <tr>
                       <td><%= citum.fecha_registro %></td>
-                      <td><%= citum.horario_id.usuario_id.nombres %></td>
-                      <td><%= citum.horario_id.usuario_id.especialidad_id.nombre %></td>
-                      <td><%= citum.horario_id.dia %></td>
-                      <td><%= citum.horario_id.horario %></td>
-                      <td><%= link_to 'Mostrar', citum %></td>
-                      <td><%= link_to 'Editar', edit_citum_path(citum) %></td>
+                      <td><%= citum.horario.usuario.nombres %></td>
+                      <td><%= citum.horario.usuario.especialidad_id %></td>
+                      <td><%= citum.horario.dia %></td>
+                      <td><%= citum.horario.horario %></td>
+                      <td><%= citum.usuario.nombres%></td>
                     </tr>
                   <% end %>
                 </tbody>

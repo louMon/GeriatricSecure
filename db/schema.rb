@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181026153253) do
+ActiveRecord::Schema.define(version: 20181026205919) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,7 +94,9 @@ ActiveRecord::Schema.define(version: 20181026153253) do
     t.text "colegiatura"
     t.integer "categoria"
     t.text "direccion"
+    t.bigint "especialidad_id"
     t.index ["email"], name: "index_usuarios_on_email", unique: true
+    t.index ["especialidad_id"], name: "index_usuarios_on_especialidad_id"
     t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
   end
 
@@ -102,4 +104,5 @@ ActiveRecord::Schema.define(version: 20181026153253) do
   add_foreign_key "cita", "usuarios"
   add_foreign_key "horarios", "usuarios"
   add_foreign_key "rols", "menus"
+  add_foreign_key "usuarios", "especialidads"
 end
