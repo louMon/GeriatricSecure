@@ -10,10 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180318173757) do
+ActiveRecord::Schema.define(version: 20181026142918) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "especialidads", force: :cascade do |t|
+    t.text "nombre"
+    t.text "descripcion"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "menus", force: :cascade do |t|
+    t.text "nombre"
+    t.boolean "permiso_ver"
+    t.boolean "permiso_agregar"
+    t.boolean "permiso_editar"
+    t.boolean "disponible_paciente"
+    t.text "icon"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "pathologies", force: :cascade do |t|
+    t.text "idpathology"
+    t.text "cie10_code"
+    t.text "pathology_name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "people", force: :cascade do |t|
     t.string "dni"
@@ -22,4 +49,27 @@ ActiveRecord::Schema.define(version: 20180318173757) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "rols", force: :cascade do |t|
+    t.text "nombre"
+    t.text "descripcion"
+    t.integer "estado"
+    t.bigint "menu_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["menu_id"], name: "index_rols_on_menu_id"
+  end
+
+  create_table "usuarios", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_usuarios_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
+  end
+
+  add_foreign_key "rols", "menus"
 end
