@@ -10,7 +10,5 @@ class AddUsuarioFieldsToUsuario < ActiveRecord::Migration[5.1]
     add_column :usuarios, :colegiatura, :text
     add_column :usuarios, :categoria, :integer
     add_column :usuarios, :direccion, :text
-    add_reference :usuarios, :rol, foreign_key: true
-    add_reference :usuarios, :especialidad, foreign_key: true
   end
 end

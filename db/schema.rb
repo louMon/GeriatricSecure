@@ -94,18 +94,12 @@ ActiveRecord::Schema.define(version: 20181026153253) do
     t.text "colegiatura"
     t.integer "categoria"
     t.text "direccion"
-    t.bigint "rol_id"
-    t.bigint "especialidad_id"
     t.index ["email"], name: "index_usuarios_on_email", unique: true
-    t.index ["especialidad_id"], name: "index_usuarios_on_especialidad_id"
     t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
-    t.index ["rol_id"], name: "index_usuarios_on_rol_id"
   end
 
   add_foreign_key "cita", "horarios"
   add_foreign_key "cita", "usuarios"
   add_foreign_key "horarios", "usuarios"
   add_foreign_key "rols", "menus"
-  add_foreign_key "usuarios", "especialidads"
-  add_foreign_key "usuarios", "rols"
 end

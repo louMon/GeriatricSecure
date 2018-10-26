@@ -4,8 +4,8 @@ class Usuario < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  belongs_to :especialidad
-  belongs_to :rol
+  #belongs_to :especialidad
+  #belongs_to :rol
   has_many :horarios
   has_many :cita
 end

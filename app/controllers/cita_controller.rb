@@ -1,6 +1,6 @@
 class CitaController < ApplicationController
   def index
-    @cita = Cita.all
+    @cita = Citum.all
   end
 
   def new
