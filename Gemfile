@@ -65,3 +65,5 @@ gem 'jquery-peity-rails', '~> 3.2'
 gem 'jquery-slimscroll-rails'
 
 gem 'autoprefixer-rails'
+
+gem 'devise', '~> 4.5'
