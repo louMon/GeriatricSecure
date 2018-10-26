@@ -5,5 +5,7 @@ class Usuario < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   belongs_to :especialidad
-
+  belongs_to :rol
+  has_many :horarios
+  has_many :cita
 end

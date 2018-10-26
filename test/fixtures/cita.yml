@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fecha_registro: 2018-10-26 10:23:52
+  horario: one
+  usuario: one
+
+two:
+  fecha_registro: 2018-10-26 10:23:52
+  horario: two
+  usuario: two
