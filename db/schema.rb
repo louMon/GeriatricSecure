@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181026144443) do
+ActiveRecord::Schema.define(version: 20181026145722) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20181026144443) do
     t.boolean "permiso_editar"
     t.boolean "disponible_paciente"
     t.text "icon"
+    t.text "tab_reference"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -59,33 +60,5 @@ ActiveRecord::Schema.define(version: 20181026144443) do
     t.index ["menu_id"], name: "index_rols_on_menu_id"
   end
 
-  create_table "usuarios", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text "nombres"
-    t.text "apellidos"
-    t.text "dni"
-    t.datetime "fecha_nacimiento"
-    t.text "genero"
-    t.integer "estado"
-    t.text "telefono"
-    t.text "colegiatura"
-    t.integer "categoria"
-    t.text "direccion"
-    t.bigint "rol_id"
-    t.bigint "especialidad_id"
-    t.index ["email"], name: "index_usuarios_on_email", unique: true
-    t.index ["especialidad_id"], name: "index_usuarios_on_especialidad_id"
-    t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
-    t.index ["rol_id"], name: "index_usuarios_on_rol_id"
-  end
-
   add_foreign_key "rols", "menus"
-  add_foreign_key "usuarios", "especialidads"
-  add_foreign_key "usuarios", "rols"
 end
