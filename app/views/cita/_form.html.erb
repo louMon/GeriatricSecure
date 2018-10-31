@@ -1,0 +1,31 @@
+<%= form_for @citum, url:path, method:method, :html =>{class:"form-horizontal"} do |f| %>
+  <div class="row">
+    <div class="col-sm-12">
+        <div class="form-group"><label class="col-sm-4 control-label">Seleccionar la especialidad:</label>
+            <div class="col-sm-8">
+              <%= f.collection_select :horario_id, Especialidad.order(:nombre), :id, :nombre, {}, class: "form-control m-b" %>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="form-group"><label class="col-sm-4 control-label">Seleccionar el medico:</label>
+            <div class="col-sm-8">
+                <%= f.grouped_collection_select :horario_id, Especialidad.order(:nombre), :usuarios, :nombre, :id, :nombres, {}, class: "form-control m-b" %>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="form-group"><label class="col-sm-4 control-label">Seleccionar el horario:</label>
+            <div class="col-sm-8">
+              <%= f.collection_select :horario_id, Horario.order(:horario), :id, :horario, {}, class: "form-control m-b" %>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="form-group ">
+    <div class="text-center">
+      <%= link_to "Cancelar", cita_path, class: "btn btn-default sical-btn-cancel" %>
+      <%= f.submit "Guardar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
+    </div>
+  </div>
+<% end %>

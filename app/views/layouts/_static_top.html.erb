@@ -10,9 +10,7 @@
                 </a>
             </li>
             <li>
-                <a href="/">
-                    <i class="fa fa-sign-out"></i> Cerrar Sesion
-                </a>
+                 <i class="fa fa-sign-out"> <%= link_to "Cerrar Sesion", destroy_usuario_session_path, :method=>'delete', class: "dropdown-item" %></i>
             </li>
         </ul>
 

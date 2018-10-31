@@ -1,29 +1,52 @@
 class CitaController < ApplicationController
+
   def index
     @cita = Citum.all
   end
 
   def new
-    @citum = current_user.cita.build
+    @citum = Citum.new
   end
 
   def show
   end
 
-  def edit
-  end
-
   def create
-    @citum = current_user.cita.build(citum_params)
+    @citum = Citum.new cita_params
+
+    @all_especialidad = Especialidad.all
 
     respond_to do |format|
       if @citum.save
         format.html { redirect_to @citum, notice: 'La cita fue creada exitosamente' }
-        format.json { render :show, status: :created, location: @citum }
+        redirect_to cita_path
       else
-        format.html { render :new }
-        format.json { render json: @citum.errors, status: :unprocessable_entity }
+        render :new
       end
     end
   end
+
+  def edit
+  end
+
+  def update
+    @citum.assign_attributes cita_params
+    if @citum.save
+      redirect_to cita_path
+    else 
+      render :edit
+    end
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_citum
+      @person = Citum.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def cita_params
+      params.require(:citum).permit(:horario_id, :usuario_id, :estado)
+    end
+
 end
