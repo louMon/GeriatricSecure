@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   
+
+  get 'historia_clinicas/show'
+
+  get 'historia_clinicas/edit'
+
   devise_for :usuarios
     devise_scope :usuario do
       get "signup", to: "devise/registrations#new"
@@ -18,5 +23,6 @@ Rails.application.routes.draw do
 
   resources :people
   resources :cita
-
+  resources :registro_consulta
+  resources :historia_clinicas
 end
