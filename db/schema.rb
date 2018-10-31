@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181026205919) do
+ActiveRecord::Schema.define(version: 20181031055820) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,13 @@ ActiveRecord::Schema.define(version: 20181026205919) do
     t.text "descripcion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "historia_clinicas", force: :cascade do |t|
+    t.bigint "usuario_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["usuario_id"], name: "index_historia_clinicas_on_usuario_id"
   end
 
   create_table "horarios", force: :cascade do |t|
@@ -54,11 +61,32 @@ ActiveRecord::Schema.define(version: 20181026205919) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "patologia", force: :cascade do |t|
+    t.text "codigo_cie"
+    t.text "nombre"
+    t.text "descripcion"
+    t.text "nombre_algoritmo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "people", force: :cascade do |t|
     t.string "dni"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "registro_consulta", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "anamnesis"
+    t.text "descripcion_examen_fisico"
+    t.text "resultado_examen"
+    t.bigint "citum_id"
+    t.bigint "historia_clinica_id"
+    t.index ["citum_id"], name: "index_registro_consulta_on_citum_id"
+    t.index ["historia_clinica_id"], name: "index_registro_consulta_on_historia_clinica_id"
   end
 
   create_table "rols", force: :cascade do |t|
@@ -102,7 +130,10 @@ ActiveRecord::Schema.define(version: 20181026205919) do
 
   add_foreign_key "cita", "horarios"
   add_foreign_key "cita", "usuarios"
+  add_foreign_key "historia_clinicas", "usuarios"
   add_foreign_key "horarios", "usuarios"
+  add_foreign_key "registro_consulta", "cita"
+  add_foreign_key "registro_consulta", "historia_clinicas"
   add_foreign_key "rols", "menus"
   add_foreign_key "usuarios", "especialidads"
 end

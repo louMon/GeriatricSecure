@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  codigo_cie: MyText
+  nombre: MyText
+  descripcion: MyText
+  nombre_algoritmo: MyText
+
+two:
+  codigo_cie: MyText
+  nombre: MyText
+  descripcion: MyText
+  nombre_algoritmo: MyText

@@ -1,0 +1,192 @@
+<%= form_for @registroconsultum, url:path, method:method  do |f| %>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content p-md" style="height: 250px">
+                    <h3 class="m-b-xxs"><strong>Datos Personales</strong></h3>
+                    <br>
+                    <div class="row">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-content">
+                                <div class="form-group" style="padding-bottom: 35px">
+                                    <div class="col-sm-12">
+                                        <label class="col-sm-2 control-label" style="margin-top: 10px">Paciente:</label>
+                                        <div class="col-sm-10"><input type="text" class="form-control" disabled="" value="Alberto Gian Pierre Chang Lopez"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group" style="padding-bottom: 40px">
+                                    <div class="col-sm-6">
+                                        <label class="col-sm-4 control-label" style="margin-top: 10px">Edad:</label>
+                                        <div class="col-sm-8"><input type="text" class="form-control" disabled="" value="89 años"></div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label class="col-sm-4 control-label" style="margin-top: 10px">DNI:</label>
+                                        <div class="col-sm-8"><input type="text" class="form-control" disabled="" value="47985678"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12 text-center">
+                                        <%= link_to 'Ver Historia Clinica'.html_safe, historia_clinica_path, class: "btn btn-warning btn-sm", data: { "toggle" => "tooltip" }%>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content p-md" style="height: 250px">
+                    <h3 class="m-b-xxs"><strong>Signos Vitales</strong></h3>
+                    <br>
+                    <div class="row">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-content">
+                                <div class="form-group" style="padding-bottom: 35px">
+                                    <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label" style="margin-top: 10px">Talla:</label>
+                                        <div class="col-sm-6"><input type="text" class="form-control" disabled="" value="179 cm"></div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label" style="margin-top: 10px">Peso:</label>
+                                        <div class="col-sm-6"><input type="text" class="form-control" disabled="" value="85 kg"></div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label" style="margin-top: 10px">Temperatura:</label>
+                                        <div class="col-sm-6"><input type="text" class="form-control" disabled="" value="37 °C"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group" style="padding-bottom: 40px" >
+                                    <div class="col-sm-6">
+                                        <label class="col-sm-6 control-label" style="margin-top: 10px">Presion Arterial:</label>
+                                        <div class="col-sm-6"><input type="text" class="form-control" disabled="" value="120/80"></div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label class="col-sm-6 control-label" style="margin-top: 10px">Nivel del Azucar:</label>
+                                        <div class="col-sm-6"><input type="text" class="form-control" disabled="" value="180"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12 text-center">
+                                        <button class="btn btn-primary " type="submit"><strong>Editar Signos Vitales</strong></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" >
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content p-md">
+                    <h3 class="m-b-xxs text-center"><strong>Detalle del Diagnostico</strong></h3>
+                    <div class="row">
+                        <div class="col-lg-12"  >
+                            <div class="tabs-container">
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a data-toggle="tab" href="#tab-1"> Anamnesis</a></li>
+                                        <li class=""><a data-toggle="tab" href="#tab-2"> Examen Fisico</a></li>
+                                        <li class=""><a data-toggle="tab" href="#tab-3"> Diagnostico</a></li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div id="tab-1" class="tab-pane active">
+                                            <div class="panel-body" style="height: 250px">
+                                                <div class="form-group">
+                                                    <div class="col-sm-12">
+                                                        <%= f.label 'Relato del paciente', class: "control-label" %>
+                                                        <%= f.text_area :anamnesis, class: "form-control", placeholder:"Escribe aqui el relato del paciente", maxlength:"200", required:"required" %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="tab-2" class="tab-pane">
+                                            <div class="panel-body" style="height: 250px">
+                                                <fieldset class="form-horizontal">
+                                                    <div class="form-group">
+                                                        <%= f.label 'Descripcion del Examen', class: "control-label" %>
+                                                        <%= f.text_field :descripcion_examen_fisico, class: "form-control", placeholder:"Escribe la descripcion del examen", maxlength:"100", required:"required" %>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <%= f.label 'Resultado del Examen', class: "control-label" %>
+                                                        <%= f.text_field :resultado_examen, class: "form-control", placeholder:"Escribe el resultado del examen", maxlength:"100", required:"required" %>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                        <div id="tab-3" class="tab-pane">
+                                            <div class="panel-body" style="height: auto">
+                                                <div class="col-sm-12">
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group"><label class="col-sm-4 control-label" style="margin-top: 10px">Seleccionar el diagnostico:</label>
+                                                            <div class="col-sm-8">
+                                                                <%= f.collection_select :horario_id, Horario.order(:horario), :id, :horario, {}, class: "form-control m-b" %>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group"><label class="col-sm-4 control-label" style="margin-top: 10px">Peso asignado:</label>
+                                                            <div class="col-sm-4"><input type="text" class="form-control" placeholder="Entre 0 y 1"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <button class="btn btn-primary " type="submit"><strong>Agregar Diagnostico</strong></button>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-stripped table-bordered">
+                                                            <thead>
+                                                            <tr>
+                                                                <th>
+                                                                    Diagnostico
+                                                                </th>
+                                                                <th>
+                                                                    Peso
+                                                                </th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <input type="text" class="form-control" placeholder="Angina de Pecho">
+                                                                </td>
+                                                                <td>
+                                                                    <input type="text" class="form-control" placeholder="0.80">
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <input type="text" class="form-control" placeholder="Insuficiencia Cardiaca">
+                                                                </td>
+                                                                <td>
+                                                                    <input type="text" class="form-control" placeholder="0.30">
+                                                                </td>
+                                                            </tr>
+                                                            </tbody>
+
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group ">
+                                <div class="text-center">
+                                    <%= link_to "Regresar", cita_path, class: "btn btn-default sical-btn-cancel" %>
+                                    <%= f.submit "Guardar", class: "btn btn-primary", data: {disable_with: 'Please Wait...'}  %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<% end %>
