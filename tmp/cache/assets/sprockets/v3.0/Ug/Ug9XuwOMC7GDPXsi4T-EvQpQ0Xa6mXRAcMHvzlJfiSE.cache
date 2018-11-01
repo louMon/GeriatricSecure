@@ -1,61 +1,0 @@
-{:uriI"üfile://app/assets/javascripts/js/plugins/codemirror/mode/vbscript/index.html?type=text/html&id=3a8b4445b5e4be8521ffa931a97282f26a2b3dc32cbcbcab4ca459527913b77a:ET:load_pathI"app/assets/javascripts;T:filenameI"Japp/assets/javascripts/js/plugins/codemirror/mode/vbscript/index.html;T:	nameI".js/plugins/codemirror/mode/vbscript/index;T:logical_pathI"3js/plugins/codemirror/mode/vbscript/index.html;T:content_typeI"text/html;T:sourceI"Ì<!doctype html>
-
-<title>CodeMirror: VBScript mode</title>
-<meta charset="utf-8"/>
-<link rel=stylesheet href="../../doc/docs.css">
-
-<link rel="stylesheet" href="../../lib/codemirror.css">
-<script src="../../lib/codemirror.js"></script>
-<script src="vbscript.js"></script>
-<style type="text/css">.CodeMirror {border-top: 1px solid black; border-bottom: 1px solid black;}</style>
-<div id=nav>
-  <a href="http://codemirror.net"><h1>CodeMirror</h1><img id=logo src="../../doc/logo.png"></a>
-
-  <ul>
-    <li><a href="../../index.html">Home</a>
-    <li><a href="../../doc/manual.html">Manual</a>
-    <li><a href="https://github.com/codemirror/codemirror">Code</a>
-  </ul>
-  <ul>
-    <li><a href="../index.html">Language modes</a>
-    <li><a class=active href="#">VBScript</a>
-  </ul>
-</div>
-
-<article>
-<h2>VBScript mode</h2>
-
-
-<div><textarea id="code" name="code">
-' Pete Guhl
-' 03-04-2012
-'
-' Basic VBScript support for codemirror2
-
-Const ForReading = 1, ForWriting = 2, ForAppending = 8
-
-Call Sub020_PostBroadcastToUrbanAirship(strUserName, strPassword, intTransmitID, strResponse)
-
-If Not IsNull(strResponse) AND Len(strResponse) = 0 Then
-	boolTransmitOkYN = False
-Else
-	' WScript.Echo "Oh Happy Day! Oh Happy DAY!"
-	boolTransmitOkYN = True
-End If
-</textarea></div>
-
-    <script>
-      var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-        lineNumbers: true,
-        indentUnit: 4
-      });
-    </script>
-
-    <p><strong>MIME types defined:</strong> <code>text/vbscript</code>.</p>
-  </article>
-;T:metadata{	:dependencieso:Set:
-@hash}
-I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"2processors:type=text/html&file_type=text/html;TTI"Xfile-digest://app/assets/javascripts/js/plugins/codemirror/mode/vbscript/index.html;TTF:charsetI"
-utf-8;F:digest"%c%«:ç¡U·˚Yã W|@ﬁ¶¶_Ö√¿‡ÅFlûP:lengthiÌ:dependencies_digest"%¨®åÔñ•©ã÷
-–âÛWä«0o:m”~÷—ª˙ô˚:idI"E3a8b4445b5e4be8521ffa931a97282f26a2b3dc32cbcbcab4ca459527913b77a;F:
-mtimel+‡.ÙW

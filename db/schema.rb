@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181031055820) do
+ActiveRecord::Schema.define(version: 20181101001920) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,16 @@ ActiveRecord::Schema.define(version: 20181031055820) do
     t.index ["usuario_id"], name: "index_horarios_on_usuario_id"
   end
 
+  create_table "medicamentos", force: :cascade do |t|
+    t.text "codigo_drug_bank"
+    t.text "nombre"
+    t.text "forma_farmaceutica"
+    t.text "nombre_algoritmo"
+    t.integer "estado_algoritmo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "menus", force: :cascade do |t|
     t.text "nombre"
     t.boolean "permiso_ver"
@@ -59,6 +69,11 @@ ActiveRecord::Schema.define(version: 20181031055820) do
     t.text "tab_reference"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "orden"
+    t.boolean "disponible_admin"
+    t.boolean "disponible_medico"
+    t.boolean "disponible_recepcionista"
+    t.boolean "disponible_enfermero"
   end
 
   create_table "patologia", force: :cascade do |t|

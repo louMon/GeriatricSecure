@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
   
 
+  get 'pacientes/index'
+
+  get 'pacientes/new'
+
+  get 'pacientes/show'
+
+  get 'pacientes/edit'
+
   get 'historia_clinicas/show'
 
   get 'historia_clinicas/edit'
@@ -9,7 +17,7 @@ Rails.application.routes.draw do
     devise_scope :usuario do
       get "signup", to: "devise/registrations#new"
       get "login", to: "devise/sessions#new"
-      get "logout", to: "devise/sessions#destroy"
+      get "sign_out", to: "devise/sessions#destroy"
       authenticated :usuario do
         root 'cita#index'
     end
@@ -25,4 +33,6 @@ Rails.application.routes.draw do
   resources :cita
   resources :registro_consulta
   resources :historia_clinicas
+  resources :pacientes
+
 end
