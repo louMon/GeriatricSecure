@@ -14,10 +14,6 @@ class Usuario < ApplicationRecord
 
   after_create :create_historia_clinica
 
-  def full_name
-    name.to_s + last_name.to_s
-  end
-
   def can_view tab_reference
      permits = permit_tabs.where(tab_reference: tab_reference).first
      permits.permiso_ver
@@ -48,10 +44,6 @@ class Usuario < ApplicationRecord
       
   end
 
-  def assign_attr user_params, params
-    self.password = params[:password] if params[:password].present?
-    self.assign_attributes user_params
-  end
 
   def get_rol
     
