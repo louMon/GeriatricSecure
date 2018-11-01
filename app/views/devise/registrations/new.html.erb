@@ -19,6 +19,23 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" , class:"form-control" , placeholder:"Confirmacion de Contraseña" %>
   </div>
   <br />
+  <div class="field">
+    <div class="form-group"><label class="col-sm-2 control-label" style="padding-top: 10px">Rol:</label>
+        <div class="col-sm-10">
+          <%= f.collection_select :rol_id, Rol.order(:nombre), :id, :nombre, {}, class: "form-control m-b" %>
+        </div>
+    </div>
+  </div>
+  <%= if rol_id == 2 %>
+    <div class="field">
+      <div class="form-group"><label class="col-sm-2 control-label" style="padding-top: 10px">Espe:</label>
+          <div class="col-sm-10">
+            <%= f.collection_select :especialidad_id, Especialidad.order(:nombre), :id, :nombre, {}, class: "form-control m-b" %>
+          </div>
+      </div>
+    </div>
+  <% end %>
+
   <div class="actions">
     <%= f.submit "Registrar", class:"btn btn-default block full-width m-b" , style:"background-color:RGB(125, 206, 160)"%>
   </div>

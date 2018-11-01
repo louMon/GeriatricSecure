@@ -1,6 +1,6 @@
 class UsuariosController < ApplicationController
   
-  before_action :set_user, only: [:edit, :update]
+  before_action :set_usuario, only: [:edit, :update]
 
   def edit
   end
@@ -19,7 +19,7 @@ class UsuariosController < ApplicationController
       params.require(:usuario).permit(:nombre, :apellidos, :dni, :fecha_nacimiento, :genero, :estado, :telefono, :direccion, :rol, :especialidad)
     end
 
-    def set_user
+    def set_usuario
       @user = Usuario.find params[:id]
   end
 end

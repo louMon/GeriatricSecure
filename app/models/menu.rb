@@ -1,5 +1,7 @@
 class Menu < ApplicationRecord
-  has_many :rols
+  belongs_to :rol
+
+  scope :get_default_tab, -> (tab_name) { where(default: true).find_by_name tab_name }
 
   scope :admin_tabs, -> () {where(disponible_admin: true)}
   scope :recepcionista_tabs, -> () {where(disponible_recepcionista: true)}

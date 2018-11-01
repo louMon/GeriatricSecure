@@ -5,12 +5,14 @@ class Usuario < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :especialidad
-  #belongs_to :rol
+  belongs_to :rol
   has_many :horarios
   has_many :cita
 
   enum categoria: [:Administrador, :Recepcionista, :Enfermero, :Medico, :Paciente]
   enum estado: [:Activo, :Inactivo]
+
+  after_create :create_historia_clinica
 
   def full_name
     name.to_s + last_name.to_s
@@ -32,7 +34,6 @@ class Usuario < ApplicationRecord
   end
 
   def permit_tabs
-
     if self.admin?
       Menu.order(:orden).admin_tabs
     elsif self.recepcionista?
@@ -47,5 +48,30 @@ class Usuario < ApplicationRecord
       
   end
 
+  def assign_attr user_params, params
+    self.password = params[:password] if params[:password].present?
+    self.assign_attributes user_params
+  end
+
+  def get_rol
+    
+  end
+
+  private
+  def create_historia_clinica
+    @historia_clinica = HistoriaClinica.new historia_clinica_params
+
+    respond_to do |format|
+      if @historia_clinica.save
+        format.html { redirect_to @historia_clinica, notice: 'La historia_clinica fue creada exitosamente' }
+      else
+        render :new
+      end
+    end
+  end
+
+  def historia_clinica_params
+    params.require(:historia_clinica).permit(:usuario_id)
+  end
 
 end

@@ -1,1 +1,59 @@
-_form.html.erb
+<%= form_for @paciente, url:path, method:method, :html =>{class:"form-horizontal"} do |f| %>
+  <div class="row">
+    <div class="col-sm-12">
+        <div class="form-group"><label class="col-sm-3 control-label">Nombres:</label>
+            <div class="col-sm-9">
+              <%= f.text_field :nombres,  class: "form-control m-b", maxlength:"50"%>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="form-group"><label class="col-sm-3 control-label">Apellidos</label>
+            <div class="col-sm-9">
+                <%= f.text_field :apellidos,  class: "form-control m-b", maxlength:"50"%>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="form-group"><label class="col-sm-3 control-label">DNI:</label>
+            <div class="col-sm-9">
+              <%= f.text_field :dni,  class: "form-control m-b", maxlength:"8"%>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="form-group"><label class="col-sm-3 control-label">Direccion:</label>
+            <div class="col-sm-9">
+              <%= f.text_field :direccion,  class: "form-control m-b", maxlength:"100"%>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="form-group"><label class="col-sm-3 control-label">Telefono:</label>
+            <div class="col-sm-9">
+              <%= f.text_field :telefono,  class: "form-control m-b", maxlength:"10"%>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="form-group"><label class="col-sm-3 control-label">Genero:</label>
+            <div class="col-sm-9">
+              <%= f.text_field :genero,  class: "form-control m-b", maxlength:"50"%>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="form-group"><label class="col-sm-3 control-label">Estado:</label>
+            <div class="col-sm-9">
+              <%= f.text_field :estado,  class: "form-control m-b", maxlength:"50"%>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="form-group ">
+    <div class="text-center">
+      <%= link_to "Regresar", pacientes_path, class: "btn btn-default" %>
+      <%= f.submit "Guardar", class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

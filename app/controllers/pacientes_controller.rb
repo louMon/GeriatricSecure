@@ -1,4 +1,8 @@
 class PacientesController < ApplicationController
+
+  before_action :set_paciente, only: [:edit, :update,:show, :toggle_status]
+  before_action :roles, only: [:new, :create, :update, :edit]
+
   def index
      @pacientes = Usuario.all.Paciente
   end
@@ -43,5 +47,13 @@ class PacientesController < ApplicationController
 
     def paciente_params
       params.require(:usuario).permit(:nombres, :apellidos, :dni, :fecha_nacimiento, :genero, :telefono,:estado, :categoria, :direccion)
+    end
+
+    def set_paciente
+      @paciente = Usuario.find params[:id]
+    end
+
+    def roles
+      @rols = Rol.all
     end
 end

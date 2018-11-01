@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181101001920) do
+ActiveRecord::Schema.define(version: 20181101173006) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,8 @@ ActiveRecord::Schema.define(version: 20181101001920) do
     t.boolean "disponible_medico"
     t.boolean "disponible_recepcionista"
     t.boolean "disponible_enfermero"
+    t.bigint "rol_id"
+    t.index ["rol_id"], name: "index_menus_on_rol_id"
   end
 
   create_table "patologia", force: :cascade do |t|
@@ -108,10 +110,8 @@ ActiveRecord::Schema.define(version: 20181101001920) do
     t.text "nombre"
     t.text "descripcion"
     t.integer "estado"
-    t.bigint "menu_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["menu_id"], name: "index_rols_on_menu_id"
   end
 
   create_table "usuarios", force: :cascade do |t|
@@ -138,17 +138,20 @@ ActiveRecord::Schema.define(version: 20181101001920) do
     t.integer "categoria"
     t.text "direccion"
     t.bigint "especialidad_id"
+    t.bigint "rol_id"
     t.index ["email"], name: "index_usuarios_on_email", unique: true
     t.index ["especialidad_id"], name: "index_usuarios_on_especialidad_id"
     t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
+    t.index ["rol_id"], name: "index_usuarios_on_rol_id"
   end
 
   add_foreign_key "cita", "horarios"
   add_foreign_key "cita", "usuarios"
   add_foreign_key "historia_clinicas", "usuarios"
   add_foreign_key "horarios", "usuarios"
+  add_foreign_key "menus", "rols"
   add_foreign_key "registro_consulta", "cita"
   add_foreign_key "registro_consulta", "historia_clinicas"
-  add_foreign_key "rols", "menus"
   add_foreign_key "usuarios", "especialidads"
+  add_foreign_key "usuarios", "rols"
 end

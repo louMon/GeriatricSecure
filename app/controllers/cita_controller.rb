@@ -1,5 +1,7 @@
 class CitaController < ApplicationController
 
+  before_action :set_citum, only: [:show, :edit, :update]
+
   def index
     @cita = Citum.all
   end
@@ -9,6 +11,7 @@ class CitaController < ApplicationController
   end
 
   def show
+    
   end
 
   def create
@@ -27,6 +30,7 @@ class CitaController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
