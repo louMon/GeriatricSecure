@@ -1,9 +1,15 @@
 class RegistroConsultaController < ApplicationController
+
+  before_action :set_citum, only: [:show, :edit, :update]
+  
   def new
+    @signos_vital = SignosVital.new
+    @diagnostico_x_registro_consultum = DiagnosticoXRegistroConsultum.new
     @registroconsultum = RegistroConsultum.new
   end
 
   def show
+
   end
 
   def create
@@ -16,6 +22,19 @@ class RegistroConsultaController < ApplicationController
       else
         render :new
       end
+    end
+  end
+
+  def edit
+
+  end
+
+  def update
+    @registroconsultum.assign_attributes registro_consultum_params
+    if @registroconsultum.save
+      redirect_to cita_path
+    else 
+      render :edit
     end
   end
 

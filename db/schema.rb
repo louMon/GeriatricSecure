@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181101173006) do
+ActiveRecord::Schema.define(version: 20181104231922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,17 @@ ActiveRecord::Schema.define(version: 20181101173006) do
     t.integer "estado"
     t.index ["horario_id"], name: "index_cita_on_horario_id"
     t.index ["usuario_id"], name: "index_cita_on_usuario_id"
+  end
+
+  create_table "diagnostico_x_registro_consulta", force: :cascade do |t|
+    t.bigint "registro_consultum_id"
+    t.bigint "patologium_id"
+    t.decimal "peso_patologia"
+    t.boolean "es_cronica"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["patologium_id"], name: "index_diagnostico_x_registro_consulta_on_patologium_id"
+    t.index ["registro_consultum_id"], name: "index_diagnostico_x_registro_consulta_on_registro_consultum_id"
   end
 
   create_table "especialidads", force: :cascade do |t|
@@ -114,6 +125,20 @@ ActiveRecord::Schema.define(version: 20181101173006) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "signos_vitals", force: :cascade do |t|
+    t.bigint "registro_consultum_id"
+    t.decimal "talla"
+    t.decimal "peso"
+    t.integer "nivel_presion_sistolica"
+    t.integer "nivel_presion_diastolica"
+    t.text "nivel_azucar"
+    t.decimal "temperatura"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "presion_arterial"
+    t.index ["registro_consultum_id"], name: "index_signos_vitals_on_registro_consultum_id"
+  end
+
   create_table "usuarios", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -147,11 +172,14 @@ ActiveRecord::Schema.define(version: 20181101173006) do
 
   add_foreign_key "cita", "horarios"
   add_foreign_key "cita", "usuarios"
+  add_foreign_key "diagnostico_x_registro_consulta", "patologia"
+  add_foreign_key "diagnostico_x_registro_consulta", "registro_consulta"
   add_foreign_key "historia_clinicas", "usuarios"
   add_foreign_key "horarios", "usuarios"
   add_foreign_key "menus", "rols"
   add_foreign_key "registro_consulta", "cita"
   add_foreign_key "registro_consulta", "historia_clinicas"
+  add_foreign_key "signos_vitals", "registro_consulta"
   add_foreign_key "usuarios", "especialidads"
   add_foreign_key "usuarios", "rols"
 end

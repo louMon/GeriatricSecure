@@ -18,6 +18,8 @@
 
 
     <div class="middle-box text-center loginscreen animated fadeInDown">
+        <% if notice %> <div class="alert alert-info"><%= notice%></div><% end %>
+        <% if alert %> <div class="alert alert-warning"><%= alert%></div><% end %>
         <div>
             <div>
                 <h1 class="logo-name" style="color:RGB(125, 206, 160)">UP+</h1>

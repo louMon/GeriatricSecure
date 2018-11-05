@@ -45,10 +45,6 @@ class Usuario < ApplicationRecord
   end
 
 
-  def get_rol
-    
-  end
-
   private
   def create_historia_clinica
     @historia_clinica = HistoriaClinica.new historia_clinica_params

@@ -8,6 +8,7 @@ class UsuariosController < ApplicationController
   def update
     @usuario = Usuario.find(params[:id])
     @usuario.assign_attributes user_params
+    ap @usuario.errors
     if @usuario.save
       redirect_to root_path
     else
@@ -17,7 +18,7 @@ class UsuariosController < ApplicationController
 
   private
     def user_params
-      params.require(:usuario).permit(:nombre, :apellidos, :dni, :fecha_nacimiento, :genero, :estado, :telefono, :colegiatura, :categoria, :direccion, :rol, :especialidad)
+      params.require(:usuario).permit(:nombres, :apellidos, :dni, :fecha_nacimiento, :genero, :estado, :telefono, :colegiatura, :categoria, :direccion, :rol, :especialidad)
     end
 
     def set_usuario

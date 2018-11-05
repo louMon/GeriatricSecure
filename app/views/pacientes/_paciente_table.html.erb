@@ -6,8 +6,7 @@
                 <thead>
                   <tr>
                     <th>DNI</th>
-                    <th>Nombres</th>
-                    <th>Apellidos</th>
+                    <th>Paciente</th>
                     <th>Estado</th>
                     <th colspan="3" class="text-center">Acciones</th>
                   </tr>
@@ -16,8 +15,7 @@
                   <% @pacientes.each do |p| %>
                     <tr>
                       <td><%= p.dni %></td>
-                      <td><%= p.nombres %></td>
-                      <td><%= p.apellidos %></td>
+                      <td><%= p.apellidos %>, <%= p.nombres %></td>
                       <td><%= p.estado %></td>
                       <td class="text-center">
                         <%= link_to '<i class="fa fa-eye" aria-hidden="true"></i>'.html_safe, paciente_path(p), class: "btn btn-info btn-sm", data: { "toggle" => "tooltip" }, title: "Ver" %>

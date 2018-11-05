@@ -29,6 +29,7 @@ class PacientesController < ApplicationController
 
   def update
     @paciente.assign_attributes paciente_params.except(:password)
+    ap @paciente.errors
     if @paciente.save
       redirect_to pacientes_path, notice: 'Datos del paciente fueron editados'
     else 

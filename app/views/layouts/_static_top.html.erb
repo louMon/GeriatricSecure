@@ -1,16 +1,11 @@
 <div class="row border-bottom">
     <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
-        <ul class="nav navbar-top-links navbar-right">
+        <ul class="nav navbar-top-links navbar-right" style="padding-top: 25px">
             <li>
-                <span class="m-r-sm text-muted welcome-message">Bienvenido a MedicalSecure</span>
-            </li>
-            <li class="dropdown">
-                <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                    <i class="fa fa-bell"></i>  <span class="label label-primary">8</span>
-                </a>
+                <span class="m-r-sm text-muted">Tu perfil: <%= link_to current_usuario.email, edit_usuario_registration_path %></span>
             </li>
             <li>
-                 <i class="fa fa-sign-out"> <%= link_to "Cerrar Sesion", destroy_usuario_session_path, class: "dropdown-item" %></i>
+                <span class="m-r-sm text-muted welcome-message"><%= link_to "Cerrar Sesión", destroy_usuario_session_path, method: :delete %></span>
             </li>
         </ul>
 
