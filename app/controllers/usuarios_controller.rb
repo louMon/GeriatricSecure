@@ -2,6 +2,11 @@ class UsuariosController < ApplicationController
   
   before_action :set_usuario, only: [:edit, :update]
 
+  def new
+    @Rols = Rol.all
+    @Especialidades = Especialidad.all
+  end
+
   def edit
   end
 

@@ -1,7 +1,3 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
-
 var especialidads = new Array();
 <%for espe in @Especialidades -%>
  especialidads.push(new Array (<%= espe.especialidad_id %>, '<%=  espe.nombre%>'));

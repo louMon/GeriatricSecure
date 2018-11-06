@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  registro_consultum: one
+  talla: 9.99
+  peso: 9.99
+  nivel_presion_sistolica: 
+  nivel_presion_diastolica: 
+  nivel_azucar: MyText
+  temperatura: 9.99
+
+two:
+  registro_consultum: two
+  talla: 9.99
+  peso: 9.99
+  nivel_presion_sistolica: 
+  nivel_presion_diastolica: 
+  nivel_azucar: MyText
+  temperatura: 9.99

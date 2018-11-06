@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  registro_consultum: one
+  patologium: one
+  peso_patologia: 9.99
+  es_cronica: false
+
+two:
+  registro_consultum: two
+  patologium: two
+  peso_patologia: 9.99
+  es_cronica: false
