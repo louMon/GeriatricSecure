@@ -1,0 +1,2 @@
+class Concentracion < ApplicationRecord
+end

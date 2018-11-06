@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  probabilidad_efectividad: 9.99
+  patologium: one
+  medicamento: one
+
+two:
+  probabilidad_efectividad: 9.99
+  patologium: two
+  medicamento: two

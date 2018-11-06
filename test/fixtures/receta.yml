@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  patologium: one
+  citum: one
+  usuario: one
+  observaciones: MyText
+
+two:
+  patologium: two
+  citum: two
+  usuario: two
+  observaciones: MyText

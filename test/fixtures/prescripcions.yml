@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  concentracion: one
+  via_administracion: MyText
+  cantidad_farmacos: 1
+  recetum: one
+  dosis: MyText
+  concentracion_medicamento: one
+
+two:
+  concentracion: two
+  via_administracion: MyText
+  cantidad_farmacos: 1
+  recetum: two
+  dosis: MyText
+  concentracion_medicamento: two
