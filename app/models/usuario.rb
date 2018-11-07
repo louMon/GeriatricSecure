@@ -53,15 +53,15 @@ class Usuario < ApplicationRecord
 
   def set_categoria
     if(self.rol_id==5) then
-      self.categoria=4
+      self.update(categoria:Paciente)
     elsif (self.rol_id==2) then
-      self.categoria=3
+     self.update(categoria:Medico)
     elsif (self.rol_id==1) then
-      self.categoria=0
+      self.update(categoria:Administrador)
     elsif (self.rol_id==3) then
-      self.categoria=1
+      self.update(categoria:Recepcionista)
     elsif (self.rol_id==4) then
-      self.categoria=2
+      self.update(categoria:Enfermero)
     end
   end
 

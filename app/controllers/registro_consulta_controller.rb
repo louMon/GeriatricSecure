@@ -1,11 +1,9 @@
 class RegistroConsultaController < ApplicationController
 
-  before_action :set_citum, only: [:show, :edit, :update]
+  before_action :set_consultum, only: [:show, :edit, :update]
   
   def new
-    @signos_vital = SignosVital.new
-    @diagnostico_x_registro_consultum = DiagnosticoXRegistroConsultum.new
-    @registroconsultum = RegistroConsultum.new
+    
   end
 
   def show
@@ -25,8 +23,10 @@ class RegistroConsultaController < ApplicationController
     end
   end
 
-  def edit
-
+  def edit()
+    @signos_vital = SignosVital.new
+    @diagnostico_x_registro_consultum = DiagnosticoXRegistroConsultum.new
+    @registroconsultum = RegistroConsultum.new
   end
 
   def update
@@ -41,6 +41,12 @@ class RegistroConsultaController < ApplicationController
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def registro_consultum_params
-      params.require(:registro_consultum).permit(:anamnesis, :descripcion_exam_fisico, :resultado_examen, :citum_id, :historiaclinica_id)
+      params.require(:registroconsultum).permit(:anamnesis, :descripcion_exam_fisico, :resultado_examen, :citum_id, :historiaclinica_id)
     end
+
+    def set_consultum
+      @registroconsultum = RegistroConsultum.find(params[:id])
+    end
+
+
 end

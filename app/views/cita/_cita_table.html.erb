@@ -26,7 +26,7 @@
                       <td class="text-center">
                         <%= link_to '<i class="fa fa-eye" aria-hidden="true"></i>'.html_safe, citum_path(citum), class: "btn btn-info btn-sm", data: { "toggle" => "tooltip" }, title: "Ver" %>
                         <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_citum_path(citum), class: "btn btn-success btn-sm", data: { "toggle" => "tooltip" }, title: "Editar" %>
-                        <%= link_to '<i class="fa fa-file-text-o" aria-hidden="true"></i>'.html_safe, new_registro_consultum_path, class: "btn btn-warning btn-sm", data: { "toggle" => "tooltip" }, title: "Registro de Consulta" %>
+                        <%= link_to '<i class="fa fa-file-text-o" aria-hidden="true"></i>'.html_safe, edit_registro_consultum_path(citum.registro_consultum), class: "btn btn-warning btn-sm", data: { "toggle" => "tooltip" }, title: "Registro de Consulta" %>
                       </td>
                     </tr>
                   <% end %>
