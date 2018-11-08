@@ -1,0 +1,347 @@
+<%= form_for @historia_clinica, url:path, method:method  do |f| %>
+<div class="row">
+    <div class="col-lg-6" >
+        <div class="ibox float-e-margins">
+            <div class="ibox-content p-md" style="height:400px" >
+                <h2 class="m-b-xxs text-center"><strong>Diagnósticos Pasados</strong></h2>
+                <br>
+                <div class="row">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-content">
+                            <input type="text" class="form-control input-sm m-b-xs" id="filter1"
+                               placeholder="Buscar diagnósticos del paciente">
+                            <table class="footable table table-stripped" data-page-size="3" data-filter=#filter1>
+                                <thead>
+                                    <tr>
+                                        <th>Patología</th>
+                                        <th>Fecha de la Cita</th>
+                                        <th>Especialidad</th>
+                                        <th>Acción</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Angina de Pecho</td>
+                                        <td>15/10/2018</td>
+                                        <td>Cardiologia</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button class="btn-primary btn btn-xs"><strong>Ver Receta</strong></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Dolor de Cabeza</td>
+                                        <td>24/04/2018</td>
+                                        <td>Medicina General</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button class="btn-primary btn btn-xs"><strong>Ver Receta</strong></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Hipertension Arterial</td>
+                                        <td>02/04/2018</td>
+                                        <td>Cardiologia</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button class="btn-primary btn btn-xs"><strong>Ver Receta</strong></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Artrosis</td>
+                                        <td>23/03/2018</td>
+                                        <td>Traumatologia</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button class="btn-primary btn btn-xs"><strong>Ver Receta</strong></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Fiebre</td>
+                                        <td>25/01/2017</td>
+                                        <td>Medicina General</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button class="btn-primary btn btn-xs"><strong>Ver Receta</strong></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Espamo Muscular</td>
+                                        <td>25/01/2017</td>
+                                        <td>Medicina General</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button class="btn-primary btn btn-xs"><strong>Ver Receta</strong></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Espamo Muscular</td>
+                                        <td>25/01/2017</td>
+                                        <td>Medicina General</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button class="btn-primary btn btn-xs"><strong>Ver Receta</strong></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Espamo Muscular</td>
+                                        <td>25/01/2017</td>
+                                        <td>Medicina General</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button class="btn-primary btn btn-xs"><strong>Ver Receta</strong></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Espamo Muscular</td>
+                                        <td>25/01/2017</td>
+                                        <td>Medicina General</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button class="btn-primary btn btn-xs"><strong>Ver Receta</strong></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="5">
+                                            <ul class="pagination pull-right"></ul>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-lg-6">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content p-md" style="height:400px">
+                <h2 class="m-b-xxs text-center"><strong>Enfermedades Crónicas</strong></h2>
+                <br>
+                <div class="row">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-content">
+                            <input type="text" class="form-control input-sm m-b-xs" id="filter2"
+                               placeholder="Buscar enfermedades crónicas del paciente">
+                            <table class="footable table table-stripped" data-page-size="3" data-filter=#filter2>
+                                <thead>
+                                    <tr>
+                                        <th>Patología</th>
+                                        <th>Medicamentos</th>
+                                        <th>Periodo</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Asma</td>
+                                        <td>Broncodilatador, Albuterol</td>
+                                        <td>
+                                            <div class="btn-group text-center">
+                                                <button class="btn-white btn btn-xs">50 años</button>
+                                            </div>                                            
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Hipertension Arterial</td>
+                                        <td>Enalapril, Bisoprolol</td>
+                                        <td>
+                                            <div class="btn-group text-center">
+                                                <button class="btn-white btn btn-xs">2 años</button>
+                                            </div>                                            
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Diabetes tipo 2</td>
+                                        <td>Insulina</td>
+                                        <td>
+                                            <div class="btn-group text-center">
+                                                <button class="btn-white btn btn-xs">4 años</button>
+                                            </div>                                            
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Asma</td>
+                                        <td>Broncodilatador, Albuterol</td>
+                                        <td>
+                                            <div class="btn-group text-center">
+                                                <button class="btn-white btn btn-xs">50 años</button>
+                                            </div>                                            
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Hipertension Arterial</td>
+                                        <td>Enalapril, Bisoprolol</td>
+                                        <td>
+                                            <div class="btn-group text-center">
+                                                <button class="btn-white btn btn-xs">2 años</button>
+                                            </div>                                            
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Diabetes tipo 2</td>
+                                        <td>Insulina</td>
+                                        <td>
+                                            <div class="btn-group text-center">
+                                                <button class="btn-white btn btn-xs">4 años</button>
+                                            </div>                                            
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="5">
+                                            <ul class="pagination pull-right"></ul>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content p-md" style="height:350px">
+                <h2 class="m-b-xxs text-center"><strong>Operaciones Realizadas</strong></h2>
+                <br>
+                <div class="row">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-content">
+                            <input type="text" class="form-control input-sm m-b-xs" id="filter3"
+                               placeholder="Buscar operaciones del paciente">
+                            <table class="footable table table-stripped" data-page-size="3" data-filter=#filter3>
+                                <thead>
+                                    <tr>
+                                        <th>Tipo de Operacion</th>
+                                        <th>Fecha de Operacion</th>
+                                        <th>Medico que lo registro</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Peritonitis</td>
+                                        <td>05/10/2010</td>
+                                        <td>Ifantes, Luis</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Operacion del Pulmon</td>
+                                        <td>01/04/2018</td>
+                                        <td>Cuadros, Javier</td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="5">
+                                            <ul class="pagination pull-right"></ul>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-lg-6">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content p-md" style="height:350px">
+                <h2 class="m-b-xxs text-center"><strong>Alergias</strong></h2>
+                <br>
+                <div class="row">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-content">
+                            <input type="text" class="form-control input-sm m-b-xs" id="filter4"
+                               placeholder="Buscar alergias del paciente">
+                            <table class="footable table table-stripped" data-page-size="3" data-filter=#filter4>
+                                <thead>
+                                    <tr>
+                                        <th>Medicamento</th>
+                                        <th>Efecto de la Alergia</th>
+                                        <th>Periodo</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Penicilina</td>
+                                        <td>Ronchas</td>
+                                        <td>1 mes </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="5">
+                                            <ul class="pagination pull-right"></ul>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content">
+                <h2 class="m-b-xxs text-center"><strong>Seguimiento de los Signos Vitales</strong></h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Nivel del Azucar</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <div>
+                                <div id="slineChart1" ></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Medida de la Presion Arterial</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <div>
+                                <div id="slineChart2" ></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% end %>

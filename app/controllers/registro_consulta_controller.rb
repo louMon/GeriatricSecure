@@ -1,32 +1,14 @@
 class RegistroConsultaController < ApplicationController
 
   before_action :set_consultum, only: [:show, :edit, :update]
-  
-  def new
-    
-  end
 
   def show
-
   end
 
-  def create
-    @registroconsultum = RegistroConsultum.new registro_consultum_params
-
-    respond_to do |format|
-      if @registroconsultum.save
-        format.html { redirect_to @registroconsultum, notice: 'El registro fue creado exitosamente' }
-        redirect_to cita_path
-      else
-        render :new
-      end
-    end
-  end
-
-  def edit()
+  def edit
+    @registroconsultum.citum.usuario
     @signos_vital = SignosVital.new
     @diagnostico_x_registro_consultum = DiagnosticoXRegistroConsultum.new
-    @registroconsultum = RegistroConsultum.new
   end
 
   def update

@@ -1,4 +1,3 @@
 class HistoriaClinica < ApplicationRecord
-  belongs_to :usuario
-  has_many :registroconsultum
+  belongs_to :usuario, :foreign_key => "usuario_id"
 end

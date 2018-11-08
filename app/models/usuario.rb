@@ -13,7 +13,7 @@ class Usuario < ApplicationRecord
   enum categoria: [:Administrador, :Recepcionista, :Enfermero, :Medico, :Paciente]
   enum estado: [:Activo, :Inactivo]
 
-  after_create :create_historia_clinica, :set_categoria
+  after_create :create_historia_clinica, :set_categoria, :set_estado
 
   def can_view tab_reference
      permits = permit_tabs.where(tab_reference: tab_reference).first
@@ -49,6 +49,11 @@ class Usuario < ApplicationRecord
     if(self.rol_id==5) then
       HistoriaClinica.create(usuario: self) if historia_clinica.nil?
     end
+  end
+
+  def set_estado
+    self.estado = 0
+    self.save
   end
 
   def set_categoria

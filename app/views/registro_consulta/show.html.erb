@@ -1,2 +1,15 @@
-<h1>RegistroConsulta#show</h1>
-<p>Find me in app/views/registro_consulta/show.html.erb</p>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="row">
+            <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-content text-center p-md">
+                            <h1><span class="text-navy"><strong>Registro de Consulta</strong></span></h1>
+                            <%= link_to 'Historia Clinica'.html_safe, historia_clinicas_path, class: "btn btn-warning btn-sm text-center", data: { "toggle" => "tooltip" }%>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <%= render 'form', registroconsultum: @registroconsultum, method: :put, path: edit_registro_consultum_path %>
+</div>
+
