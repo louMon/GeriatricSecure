@@ -17,3 +17,4 @@
 //= require jquery.peity.min.js
 //= require jquery.slimscroll.min.js
 //= require inspinia.js
+

@@ -6,9 +6,9 @@ class HistoriaClinicasController < ApplicationController
   end
 
   def edit
-    @signos_vital = SignosVital.new
-    @diagnostico_x_registro_consultum = DiagnosticoXRegistroConsultum.new
-    @historia_clinica = HistoriaClinica.new
+    @historia_clinica.usuario
+    @signos_vital
+    @diagnostico_x_registro_consultum
   end
 
   def update

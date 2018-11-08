@@ -5,7 +5,9 @@
                 <span class="m-r-sm text-muted">Tu perfil: <%= link_to current_usuario.email, edit_usuario_registration_path %></span>
             </li>
             <li>
-                <span class="m-r-sm text-muted welcome-message"><%= link_to "Cerrar Sesión", destroy_usuario_session_path, method: :delete %></span>
+                <span class="m-r-sm text-muted welcome-message">
+                    <%= link_to "Cerrar Sesión", destroy_usuario_session_path, :method => :delete %>
+                </span>
             </li>
         </ul>
 
