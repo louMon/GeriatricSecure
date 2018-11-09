@@ -31,13 +31,13 @@ class Usuario < ApplicationRecord
   end
 
   def permit_tabs
-    if self.admin?
+    if self.Administrador?
       Menu.order(:orden).admin_tabs
-    elsif self.recepcionista?
+    elsif self.Recepcionista?
       Menu.order(:orden).recepcionista_tabs
-    elsif self.enfermero?
+    elsif self.Enfermero?
       Menu.order(:orden).enfermero_tabs
-    elsif self.medico?
+    elsif self.Medico?
       Menu.order(:orden).medico_tabs
     else 
       Menu.order(:orden).paciente_tabs

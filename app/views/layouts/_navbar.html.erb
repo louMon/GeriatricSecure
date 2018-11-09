@@ -21,20 +21,14 @@
                     </a>
                 </div>
             </li>
-
-            <li>
-                <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Mis Pacientes</span></a>
-            </li>
-            <li class="active">
-                <a href="layouts.html"><i class="fa fa-diamond"></i> <span class="nav-label">Mis Citas</span> <span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level collapse">
-                    <li><a href="graph_flot.html">Citas Pendientes</a></li>
-                    <li><a href="graph_morris.html">Citas Realizadas</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Mi Disponibilidad</span></a>
-            </li>
+            <% @usuario_menus.each do |menu| %>
+                <li class="d-flex flex-column <%= @controller == menu.tab_reference ? "active" : "" %>">
+                  <a href= "<%= '/' + menu.tab_reference %>" >
+                    <i class="nav-icon <%= menu.icon %>"></i>
+                    <span class="nav-label"><%= menu.nombre %></span>
+                  </a>
+                </li>
+            <% end %>
             
         </ul>
 
