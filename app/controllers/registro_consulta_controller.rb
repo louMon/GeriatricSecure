@@ -14,7 +14,7 @@ class RegistroConsultaController < ApplicationController
   def update
     @registroconsultum.assign_attributes registro_consultum_params
     if @registroconsultum.save
-      redirect_to cita_path
+      redirect_to recomendacion_receta_edit_path
     else 
       render :edit
     end

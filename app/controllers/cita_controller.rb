@@ -3,7 +3,7 @@ class CitaController < ApplicationController
   before_action :set_citum, only: [:show, :edit, :update]
 
   def index
-    @cita = Citum.buscando_cita_por_usuario current_usuario
+    @cita = Citum.buscando_citas current_usuario
   end
 
   def new

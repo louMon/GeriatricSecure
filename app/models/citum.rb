@@ -9,6 +9,8 @@ class Citum < ApplicationRecord
   after_create :create_consulta , :create_receta, :set_estado_inicial
 
   scope :cita_por_usuario, -> (current_usuario) {where(usuario_id: current_usuario)}
+
+  scope :cita_por_horario_usuario, -> (horario) {where(horario_id: horario)}
   
   def set_estado_inicial
     self.estado = 1
@@ -35,14 +37,20 @@ class Citum < ApplicationRecord
     self.update(estado:Terminada)
   end
 
-  def self.buscando_cita_por_paciente current_usuario
-    cita_por_usuario(current_usuario)
+  def self.buscando_citas current_usuario
+    if current_usuario.categoria=='Paciente' then
+      cita_por_usuario(current_usuario)
+    else
+      horario = Horario.horarios_por_usuario(current_usuario)
+      cita_por_horario_usuario(horario)
+    end
   end
 
-  def self.buscando_cita_por_medico current_usuario
-    horario = Horario.find(params[:horario_id])
-    usuario = Usuario.find(params[:horario.usuario_id])
-    cita_por_usuario(usuario)
+  def self.buscando_pacientes_por_medico current_usuario
+    horarios = Horario.horarios_por_usuario(current_usuario)
+    cita = cita_por_horario_usuario(horarios)
+    pacientes = Usuario.buscar_pac(cita)
   end
+
 
 end

@@ -4,7 +4,8 @@ class PacientesController < ApplicationController
   before_action :roles, only: [:new, :create, :update, :edit]
 
   def index
-     @pacientes = Usuario.all.Paciente
+     ap Citum.buscando_pacientes_por_medico current_usuario
+     @pacientes = Citum.buscando_pacientes_por_medico current_usuario
   end
 
   def new

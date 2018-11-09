@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'recomendacion_receta/edit'
+
   resources :pacientes
   resources :cita
   resources :registro_consulta

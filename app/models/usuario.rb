@@ -70,11 +70,17 @@ class Usuario < ApplicationRecord
     end
   end
 
-
   def get_edad(fecha_nacimiento)
     now = Time.now.utc.to_date
     now.year - fecha_nacimiento.year - ((now.month > fecha_nacimiento.month || (now.month == fecha_nacimiento.month && now.day >= fecha_nacimiento.day)) ? 0 : 1)
   end
 
+  def self.buscar_pac citas
+    lst = []
+    for i in citas
+      lst.append(self.find(i.usuario_id))
+    end
+    lst.uniq{|e| e.id}
+  end
 
 end
