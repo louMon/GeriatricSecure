@@ -26,15 +26,15 @@ class Citum < ApplicationRecord
   end
 
   def completar_consulta
-    self.update(estado:Proceso_Consulta)
+    self.update(estado:2)
   end
 
   def completar_receta
-    self.update(estado:Proceso_Receta)
+    self.update(estado:3)
   end
 
   def terminar_cita
-    self.update(estado:Terminada)
+    self.update(estado:4)
   end
 
   def self.buscando_citas current_usuario
