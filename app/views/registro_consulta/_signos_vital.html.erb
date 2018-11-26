@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="ibox float-e-margins">
+        <div class="ibox-content">
+            <div class="form-group" style="padding-bottom: 35px">
+                <div class="col-sm-4">
+                    <%= f.label 'Talla', class: "control-label" %>
+                    <%= f.text_field :talla, class: "form-control", maxlength:"7", required:"required" %>
+                </div>
+                <div class="col-sm-4">
+                    <%= f.label 'Peso', class: "control-label" %>
+                    <%= f.text_field :peso, class: "form-control", maxlength:"7", required:"required" %>
+                </div>
+                <div class="col-sm-4">
+                    <%= f.label 'Temperatura', class: "control-label" %>
+                    <%= f.text_field :temperatura, class: "form-control", maxlength:"5", required:"required" %>
+                </div>
+            </div>
+            <div class="form-group" style="padding-bottom: 40px" >
+                <div class="col-sm-6">
+                    <%= f.label 'Presion Arterial', class: "control-label" %>
+                    <%= f.text_field :presion_arterial, class: "form-control", maxlength:"8", required:"required" %>
+                </div>
+                <div class="col-sm-6">
+                    <%= f.label 'Nivel de Azucar', class: "control-label" %>
+                    <%= f.text_field :nivel_azucar, class: "form-control", maxlength:"8", required:"required" %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

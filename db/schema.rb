@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181106234009) do
+ActiveRecord::Schema.define(version: 20181124231204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -183,8 +183,6 @@ ActiveRecord::Schema.define(version: 20181106234009) do
     t.bigint "registro_consultum_id"
     t.decimal "talla"
     t.decimal "peso"
-    t.integer "nivel_presion_sistolica"
-    t.integer "nivel_presion_diastolica"
     t.text "nivel_azucar"
     t.decimal "temperatura"
     t.datetime "created_at", null: false

@@ -1,0 +1,8 @@
+<tr>
+  <td><%= f.collection_select :patologium_id, Patologium.order(:nombre), :id, :nombre, {}, class: "form-control m-b" %></td>
+  <td><%= f.text_field :peso_patologia, class: "form-control", maxlength:"4", required:"required"%></td>
+  <td><%= f.check_box :es_cronica %></td>
+  <td>
+    <%= link_to 'Borrar', '#', class:'remove_record' %>
+  </td>
+</tr>
