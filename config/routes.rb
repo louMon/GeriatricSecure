@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
-  
-  get 'recomendacion_receta/edit'
 
   resources :pacientes
   resources :cita
   resources :registro_consulta
   resources :historia_clinicas
+  resources :receta
   
+  get 'receta/:id/preview' => 'receta#preview', as: :preview_recetum
+
   devise_for :usuarios
     devise_scope :usuario do
     get "signup", to: "devise/registrations#new"

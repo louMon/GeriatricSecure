@@ -68,3 +68,4 @@ gem 'autoprefixer-rails'
 
 gem 'devise', '~> 4.5'
 gem 'awesome_print', '~> 1.8'
+gem 'nested_form'

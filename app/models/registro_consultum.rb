@@ -5,6 +5,5 @@ class RegistroConsultum < ApplicationRecord
   has_many :diagnostico_x_registro_consulta, dependent: :destroy
   
   accepts_nested_attributes_for :diagnostico_x_registro_consulta, allow_destroy: true
-  accepts_nested_attributes_for :signos_vital, allow_destroy: true
-
+  
 end
