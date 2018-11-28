@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181124231204) do
+ActiveRecord::Schema.define(version: 20181128011315) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -168,6 +168,11 @@ ActiveRecord::Schema.define(version: 20181124231204) do
     t.text "descripcion_examen_fisico"
     t.text "resultado_examen"
     t.bigint "citum_id"
+    t.decimal "talla"
+    t.decimal "peso"
+    t.text "nivel_azucar"
+    t.decimal "temperatura"
+    t.text "presion_arterial"
     t.index ["citum_id"], name: "index_registro_consulta_on_citum_id"
   end
 

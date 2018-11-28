@@ -1,3 +1,4 @@
+<%= form_for @recetum do |f| %>
 <div class="wrapper wrapper-content animated fadeInRight">
   <div class="row">
       <div class="row">
@@ -20,11 +21,11 @@
                               <div class="ibox-content">
                                   <div class="col-sm-8">
                                       <label class="col-sm-2 control-label" style="margin-top: 10px">Paciente:</label>
-                                      <div class="col-sm-10"><input type="text" class="form-control" disabled="" value="Alberto Gian Pierre Chang Lopez"></div>
+                                      <div class="col-sm-10"><input type="text" class="form-control" disabled="" value=" <%= @recetum.citum.usuario.apellidos %>, <%= @recetum.citum.usuario.nombres %>"> </div>
                                   </div>
                                   <div class="col-sm-4">
                                       <label class="col-sm-4 control-label" style="margin-top: 10px">Edad:</label>
-                                      <div class="col-sm-8"><input type="text" class="form-control" disabled="" value="89 años"></div>
+                                      <div class="col-sm-8"><input type="text" class="form-control" disabled="" value=" <%= @recetum.citum.usuario.get_edad(@recetum.citum.usuario.fecha_nacimiento) %> años"></div>
                                   </div>
                               </div>
                           </div>
@@ -70,7 +71,7 @@
                                                       </tr>
                                                   </tbody>
                                               </table>
-                                              <button class="btn btn-primary pull-right" type="submit"><strong>Seleccionar</strong></button>
+                                              <%= link_to 'Seleccionar'.html_safe, edit_recetum_path(@recetum), class: "btn btn-primary pull-right", data: { "toggle" => "tooltip" }%>
                                           </div>
                                       </div>
                                   </div>
@@ -104,7 +105,7 @@
                                                       </tr>
                                                   </tbody>
                                               </table>
-                                              <button class="btn btn-info pull-right" type="submit"><strong>Seleccionar</strong></button>
+                                              <%= link_to 'Seleccionar'.html_safe, edit_recetum_path(@recetum), class: "btn btn-info pull-right", data: { "toggle" => "tooltip" }%>
                                           </div>
                                       </div>
                                   </div>
@@ -138,7 +139,7 @@
                                                       </tr>
                                                   </tbody>
                                               </table>
-                                              <button class="btn btn-warning pull-right" type="submit"><strong>Seleccionar</strong></button>
+                                              <%= link_to 'Seleccionar'.html_safe, edit_recetum_path(@recetum), class: "btn btn-warning pull-right", data: { "toggle" => "tooltip" }%>
                                           </div>
                                       </div>
                                   </div>
@@ -147,8 +148,8 @@
                       </div>
                       <div class="ibox-content">
                           <div class="pull-right">
-                              <button class="btn btn-white" type="submit">Regresar</button>
-                              <button class="btn btn-primary" type="submit">Continuar sin Recomendacion</button>
+                              <%= link_to "Regresar", edit_registro_consultum_path(@recetum.citum.registro_consultum), class: "btn btn-default "%>
+                              <%= link_to "Continuar sin Recomendacion", edit_recetum_path(@recetum), class: "btn btn-primary" %>
                           </div>
                       </div>
                   </div>
@@ -158,3 +159,5 @@
       </div>
   </div>
 </div>
+
+<% end %>
