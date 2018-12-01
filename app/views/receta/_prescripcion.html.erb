@@ -1,0 +1,20 @@
+<tr>
+  <td><%= f.collection_select :medicamento_id, Medicamento.order(:nombre), :id, :nombre, {}, class: "form-control m-b" %></td>
+  <td><%= f.collection_select :concentracion_x_medicamento_id, Especialidad.order(:nombre), :id, :nombre, {}, class: "form-control m-b" %></td>
+  <td><%= f.field :horario_id, Especialidad.order(:nombre), :id, :nombre, {}, class: "form-control m-b" %></td>
+
+  <td><%= f.text_field :peso_patologia, class: "form-control", maxlength:"4", required:"required"%></td>
+  <td><%= f.check_box :es_cronica %></td>
+  <td>
+    <%= link_to 'Borrar', '#', class:'remove_record' %>
+  </td>
+</tr>
+
+<tr>
+    <td>Bisoprolol</td>
+    <td>5mg</td>
+    <td>Tableta</td>
+    <td>Oral</td>
+    <td>6</td>
+    <td>Cada 8 horas</td>
+</tr>

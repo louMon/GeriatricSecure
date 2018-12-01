@@ -10,14 +10,27 @@
     <div class="col-sm-12">
         <div class="form-group"><label class="col-sm-4 control-label">Seleccionar el medico:</label>
             <div class="col-sm-8">
-                <%= f.grouped_collection_select :horario_id, Especialidad.order(:nombre), :usuarios, :nombre, :id, :nombres, {}, class: "form-control m-b" %>
+              <%= f.grouped_collection_select :horario_id, Especialidad.order(:nombre), :usuarios, :nombre, :id, :nombres, {}, class: "form-control m-b" %>
             </div>
         </div>
     </div>
     <div class="col-sm-12">
         <div class="form-group"><label class="col-sm-4 control-label">Seleccionar el horario:</label>
             <div class="col-sm-8">
-              <%= f.collection_select :horario_id, Horario.order(:horario), :id, :horario, {}, class: "form-control m-b" %>
+              <%= f.collection_select :horario_id, Horario.order(:horario), :id, :horario, {}, class: "form-control m-b"  %>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="form-group"><label class="col-sm-4 control-label">Buscar paciente:</label>
+            <div class="col-sm-3">
+              <%= f.text_field :usuario_id, class: "form-control m-b", maxlength:"7", placeholder:"Aqui el DNI del paciente"%>
+            </div>
+            <div class="col-sm-1">
+              <%= link_to "Buscar", cita_path, class: "btn btn-warning" %>
+            </div>
+            <div class="col-sm-4">
+              <%= f.text_field :usuario_id, class: "form-control m-b", maxlength:"100", disabled:true %>
             </div>
         </div>
     </div>

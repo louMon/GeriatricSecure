@@ -16,8 +16,8 @@ class CitaController < ApplicationController
 
   def create
     @citum = Citum.new cita_params
-
-    @all_especialidad = Especialidad.all
+    @especialidades = Especialidad.all
+    @usuarios = Usuario.all
 
     respond_to do |format|
       if @citum.save
@@ -36,7 +36,7 @@ class CitaController < ApplicationController
   def update
     @citum.assign_attributes cita_params
     if @citum.save
-      redirect_to cita_path
+      redirect_to cita_path , :notice =>"La cita fue editada exitosamente"
     else 
       render :edit
     end

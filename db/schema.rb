@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181128011315) do
+ActiveRecord::Schema.define(version: 20181201024632) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -130,6 +130,8 @@ ActiveRecord::Schema.define(version: 20181128011315) do
     t.text "nombre_algoritmo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "especialidad_id"
+    t.index ["especialidad_id"], name: "index_patologia_on_especialidad_id"
   end
 
   create_table "people", force: :cascade do |t|
@@ -140,7 +142,6 @@ ActiveRecord::Schema.define(version: 20181128011315) do
   end
 
   create_table "prescripcions", force: :cascade do |t|
-    t.bigint "concentracion_id"
     t.text "via_administracion"
     t.integer "cantidad_farmacos"
     t.bigint "recetum_id"
@@ -148,7 +149,6 @@ ActiveRecord::Schema.define(version: 20181128011315) do
     t.bigint "concentracion_x_medicamento_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["concentracion_id"], name: "index_prescripcions_on_concentracion_id"
     t.index ["concentracion_x_medicamento_id"], name: "index_prescripcions_on_concentracion_x_medicamento_id"
     t.index ["recetum_id"], name: "index_prescripcions_on_recetum_id"
   end
@@ -239,8 +239,8 @@ ActiveRecord::Schema.define(version: 20181128011315) do
   add_foreign_key "medicamento_x_patologia", "medicamentos"
   add_foreign_key "medicamento_x_patologia", "patologia"
   add_foreign_key "menus", "rols"
+  add_foreign_key "patologia", "especialidads"
   add_foreign_key "prescripcions", "concentracion_x_medicamentos"
-  add_foreign_key "prescripcions", "concentracions"
   add_foreign_key "prescripcions", "receta"
   add_foreign_key "receta", "cita"
   add_foreign_key "registro_consulta", "cita"

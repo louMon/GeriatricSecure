@@ -1,4 +1,4 @@
 class ConcentracionXMedicamento < ApplicationRecord
-  belongs_to :medicamento
-  belongs_to :concentracion
+  has_many :medicamento
+  has_many :concentracion
 end
