@@ -10,6 +10,13 @@ class RegistroConsultaController < ApplicationController
     @registroconsultum.citum.usuario
     @registroconsultum.diagnostico_x_registro_consulta.build
     @registroconsultum.citum.completar_consulta
+
+    begin
+      RestClient.post 'http://127.0.0.1:5000/hola', {"sistema_medico"=>"Cardiologia"}
+    rescue RestClient::Exception => e
+      puts e.http_body
+    end
+
   end
 
   def update
