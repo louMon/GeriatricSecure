@@ -8,14 +8,11 @@ class RegistroConsultaController < ApplicationController
   def edit
     @registroconsultum.citum
     @registroconsultum.citum.usuario
+    @registroconsultum.citum.horario.usuario.especialidad
     @registroconsultum.diagnostico_x_registro_consulta.build
     @registroconsultum.citum.completar_consulta
 
-    begin
-      RestClient.post 'http://127.0.0.1:5000/hola', {"sistema_medico"=>"Cardiologia"}
-    rescue RestClient::Exception => e
-      puts e.http_body
-    end
+    get_diagnostico_actual
 
   end
 
@@ -40,5 +37,35 @@ class RegistroConsultaController < ApplicationController
       @registroconsultum = RegistroConsultum.find(params[:id])
     end
 
+    def get_antecedentes_pacientes
+      #diagnostico_x_registro_consulta
+    end
+
+    def get_medicamentos_especialidad
+
+    end
+
+    def get_diagnostico_actual
+      id = @registroconsultum.id
+      patologium = DiagnosticoXRegistroConsultum.find_by_registro_consultum_id(id)
+      body = {
+        
+      }
+      patologium
+    end
+
+    def paciente_params
+      body = {
+        paciente: {
+          "sistema_medico": @registroconsultum.citum.horario.usuario.especialidad,
+          "antecedentes": params["antecedentes"],
+          "medicamentos": params["medicamentos"],
+          "estados_medicamentos": params["estados_medicamentos"],
+          "diagnostico": params["diagnostico"],
+          "pesos_diagnostico": params["pesos_diagnostico"]
+        }
+      }
+      paciente
+    end
 
 end

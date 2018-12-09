@@ -1,3 +1,3 @@
 class Concentracion < ApplicationRecord
-  belongs: concentracion_x_medicamento
+  belongs_to :concentracion_x_medicamento
 end

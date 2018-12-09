@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181201024632) do
+ActiveRecord::Schema.define(version: 20181209034229) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "antecedentes_x_especialidads", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "patologium_id"
+    t.bigint "especialidad_id"
+    t.index ["especialidad_id"], name: "index_antecedentes_x_especialidads_on_especialidad_id"
+    t.index ["patologium_id"], name: "index_antecedentes_x_especialidads_on_patologium_id"
+  end
 
   create_table "cita", force: :cascade do |t|
     t.datetime "fecha_registro"
@@ -39,6 +48,15 @@ ActiveRecord::Schema.define(version: 20181201024632) do
     t.text "descripcion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "diagnostico_x_especialidads", force: :cascade do |t|
+    t.bigint "patologium_id"
+    t.bigint "especialidad_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["especialidad_id"], name: "index_diagnostico_x_especialidads_on_especialidad_id"
+    t.index ["patologium_id"], name: "index_diagnostico_x_especialidads_on_patologium_id"
   end
 
   create_table "diagnostico_x_registro_consulta", force: :cascade do |t|
@@ -104,6 +122,15 @@ ActiveRecord::Schema.define(version: 20181201024632) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "medicamentos_x_especialidads", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "medicamento_id"
+    t.bigint "especialidad_id"
+    t.index ["especialidad_id"], name: "index_medicamentos_x_especialidads_on_especialidad_id"
+    t.index ["medicamento_id"], name: "index_medicamentos_x_especialidads_on_medicamento_id"
+  end
+
   create_table "menus", force: :cascade do |t|
     t.text "nombre"
     t.boolean "permiso_ver"
@@ -131,6 +158,8 @@ ActiveRecord::Schema.define(version: 20181201024632) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "especialidad_id"
+    t.integer "alg_sintomas_flag"
+    t.integer "alg_antecedentes_flag"
     t.index ["especialidad_id"], name: "index_patologia_on_especialidad_id"
   end
 
@@ -227,10 +256,14 @@ ActiveRecord::Schema.define(version: 20181201024632) do
     t.index ["rol_id"], name: "index_usuarios_on_rol_id"
   end
 
+  add_foreign_key "antecedentes_x_especialidads", "especialidads"
+  add_foreign_key "antecedentes_x_especialidads", "patologia"
   add_foreign_key "cita", "horarios"
   add_foreign_key "cita", "usuarios"
   add_foreign_key "concentracion_x_medicamentos", "concentracions"
   add_foreign_key "concentracion_x_medicamentos", "medicamentos"
+  add_foreign_key "diagnostico_x_especialidads", "especialidads"
+  add_foreign_key "diagnostico_x_especialidads", "patologia"
   add_foreign_key "diagnostico_x_registro_consulta", "patologia"
   add_foreign_key "diagnostico_x_registro_consulta", "registro_consulta"
   add_foreign_key "efecto_secundarios", "medicamentos"
@@ -238,6 +271,8 @@ ActiveRecord::Schema.define(version: 20181201024632) do
   add_foreign_key "horarios", "usuarios"
   add_foreign_key "medicamento_x_patologia", "medicamentos"
   add_foreign_key "medicamento_x_patologia", "patologia"
+  add_foreign_key "medicamentos_x_especialidads", "especialidads"
+  add_foreign_key "medicamentos_x_especialidads", "medicamentos"
   add_foreign_key "menus", "rols"
   add_foreign_key "patologia", "especialidads"
   add_foreign_key "prescripcions", "concentracion_x_medicamentos"
