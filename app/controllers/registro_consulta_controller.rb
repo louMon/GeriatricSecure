@@ -12,19 +12,36 @@ class RegistroConsultaController < ApplicationController
     @registroconsultum.diagnostico_x_registro_consulta.build
     @registroconsultum.citum.completar_consulta
 
-    get_diagnostico_actual
+    #ap get_patologium_codigo
+    #ap get_patologium_peso
+    #ap get_estados_medicamentos
+    #ap get_medicamentos_codigos
+
+    ap save_to_cronic
 
   end
 
   def update
     if @registroconsultum.update(registro_consultum_params)
-      @registroconsultum.citum.completar_receta 
+      ap 'se guardo exitosamente'
+      #@registroconsultum.citum.completar_receta 
       #Aca falta la llamada al API
-      redirect_to preview_recetum_path(@registroconsultum.citum.recetum), :notice =>"La consulta fue guardada exitosamente"
+      #redirect_to preview_recetum_path(@registroconsultum.citum.recetum), :notice =>"La consulta fue guardada exitosamente"
     else 
       render :edit
     end
 
+  end
+
+  def save_to_cronic
+    id_usuario = @registroconsultum.citum.usuario.id
+    obj_historia = Historia_Clinica.find_by_id(id_usuario)
+
+    id_registro_consulta = @registroconsultum.id
+    lst_diagnostico = DiagnosticoXRegistroConsultum.where("es_cronica"="1" AND "registro_consultum_id"=id_registro_consulta )
+    lst_diagnostico
+
+    ##ACA HAY UN EERROR DE WHERE
   end
 
   private
@@ -38,31 +55,88 @@ class RegistroConsultaController < ApplicationController
     end
 
     def get_antecedentes_pacientes
-      #diagnostico_x_registro_consulta
+      id_especialidad = @registroconsultum.citum.horario.usuario.especialidad.id
+      lst_all_antecedentes = AntecedentesXEspecialidad.where("especialidad_id":id_especialidad)
+      lst_codigos = {}
+      for i in lst_all_antecedentes
+        obj_i = Patologium.find_by_id(i.patologium_id)
+        lst_codigos.append(obj_i.nombre_algoritmo)
+      end
+      lst_codigos
     end
 
-    def get_medicamentos_especialidad
-
+    #Devuelve el diccionario de codigos de medicamentos
+    def get_medicamentos_codigos
+      id_especialidad = @registroconsultum.citum.horario.usuario.especialidad.id
+      lst_all_medicamento = MedicamentosXEspecialidad.where("especialidad_id":id_especialidad)
+      lst_estados_med = {}
+      for i in lst_all_medicamento
+        obj_m = Medicamento.find_by_id(i.medicamento_id)
+        lst_estados_med[obj_m.nombre_algoritmo]=0
+      end
+      lst_estados_med
     end
 
-    def get_diagnostico_actual
-      id = @registroconsultum.id
-      patologium = DiagnosticoXRegistroConsultum.find_by_registro_consultum_id(id)
-      body = {
-        
-      }
-      patologium
+    #Devuelve el arreglo de estados
+    def get_medicamentos_estados
+      id_especialidad = @registroconsultum.citum.horario.usuario.especialidad.id
+      lst_all_medicamento = MedicamentosXEspecialidad.where("especialidad_id":id_especialidad)
+      lst_estados_med = []
+      for i in lst_all_medicamento
+        obj_m = Medicamento.find_by_id(i.medicamento_id)
+        lst_estados_med.append(obj_m.estado_algoritmo)
+      end
+      lst_estados_med
     end
+
+    #Devuelve el arreglo de codigos de los diagnosticos por especialidad
+    def get_patologia_codigos
+      id_especialidad = @registroconsultum.citum.horario.usuario.especialidad.id
+      lst_all_diagnostico = DiagnosticoXEspecialidad.where("especialidad_id":id_especialidad)
+      lst_codigos = []
+      for i in lst_all_diagnostico
+        obj_i = Patologium.find_by_id(i.patologium_id)
+        lst_codigos.append(obj_i.nombre_algoritmo)
+      end
+      lst_codigos
+    end
+
+    #Devuelve el arreglo de pesos asignados a los diagnosticos
+    def get_patologia_pesos
+      id_registro_consulta = @registroconsultum.id
+      id_especialidad = @registroconsultum.citum.horario.usuario.especialidad.id
+
+      lst_diagnostico = DiagnosticoXRegistroConsultum.where("registro_consultum_id":id_registro_consulta)
+      lst_all_diagnostico = DiagnosticoXEspecialidad.where("especialidad_id":id_especialidad)
+
+      lst_pesos = []
+      for i in lst_all_diagnostico
+        obj_i = Patologium.find_by_id(i.patologium_id)
+        flag = 0
+        for j in lst_diagnostico
+          obj_j = Patologium.find_by_id(j.patologium_id)
+          if (obj_i == obj_j) then
+            lst_pesos.append(j.peso_patologia)
+            flag = 1
+          end
+        end
+        if (flag == 0) then
+          lst_pesos.append(0.0)
+        end
+      end
+      lst_pesos
+    end
+
 
     def paciente_params
       body = {
         paciente: {
           "sistema_medico": @registroconsultum.citum.horario.usuario.especialidad,
-          "antecedentes": params["antecedentes"],
-          "medicamentos": params["medicamentos"],
-          "estados_medicamentos": params["estados_medicamentos"],
-          "diagnostico": params["diagnostico"],
-          "pesos_diagnostico": params["pesos_diagnostico"]
+          "antecedentes": get_medicamentos_codigos,
+          "medicamentos": get_medicamentos_codigos,
+          "estados_medicamentos": get_medicamentos_estados,
+          "diagnostico": get_patologia_codigos,
+          "pesos_diagnostico": get_patologia_pesos
         }
       }
       paciente

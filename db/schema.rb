@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181209034229) do
+ActiveRecord::Schema.define(version: 20181209223516) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,15 @@ ActiveRecord::Schema.define(version: 20181209034229) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["medicamento_id"], name: "index_efecto_secundarios_on_medicamento_id"
+  end
+
+  create_table "enfermedad_cronicas", force: :cascade do |t|
+    t.bigint "historia_clinica_id"
+    t.bigint "patologium_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["historia_clinica_id"], name: "index_enfermedad_cronicas_on_historia_clinica_id"
+    t.index ["patologium_id"], name: "index_enfermedad_cronicas_on_patologium_id"
   end
 
   create_table "especialidads", force: :cascade do |t|
@@ -267,6 +276,8 @@ ActiveRecord::Schema.define(version: 20181209034229) do
   add_foreign_key "diagnostico_x_registro_consulta", "patologia"
   add_foreign_key "diagnostico_x_registro_consulta", "registro_consulta"
   add_foreign_key "efecto_secundarios", "medicamentos"
+  add_foreign_key "enfermedad_cronicas", "historia_clinicas"
+  add_foreign_key "enfermedad_cronicas", "patologia"
   add_foreign_key "historia_clinicas", "usuarios"
   add_foreign_key "horarios", "usuarios"
   add_foreign_key "medicamento_x_patologia", "medicamentos"
