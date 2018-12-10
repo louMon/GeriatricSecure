@@ -16,8 +16,8 @@ class RegistroConsultaController < ApplicationController
     #ap get_patologium_peso
     #ap get_estados_medicamentos
     #ap get_medicamentos_codigos
-
-    ap save_to_cronic
+    #ap save_to_cronic
+    #ap get_antecedentes_pacientes
 
   end
 
@@ -25,7 +25,27 @@ class RegistroConsultaController < ApplicationController
     if @registroconsultum.update(registro_consultum_params)
       ap 'se guardo exitosamente'
       #@registroconsultum.citum.completar_receta 
+      save_to_cronic
       #Aca falta la llamada al API
+
+      begin
+        options = {
+          'end_point': 'processmedication/' + params["id"],
+          'token': cookies[:session_token]
+        }
+        body = RecomendacionMedicamentosSerializer.new().create_perfil_paciente(user_params)
+        response = ApiService.new().put(body, options)
+        if response[:status] == 200
+          #redirect_to web_users_path
+          #redirect_to preview_recetum_path(@registroconsultum.citum.recetum), :notice =>"La consulta fue guardada exitosamente"
+        else
+          flash.now[:success] = 'A ocurrido un error'
+          render :new
+        end   
+      rescue Exception => e
+        render 'errors/400'
+      end
+
       #redirect_to preview_recetum_path(@registroconsultum.citum.recetum), :notice =>"La consulta fue guardada exitosamente"
     else 
       render :edit
@@ -35,13 +55,16 @@ class RegistroConsultaController < ApplicationController
 
   def save_to_cronic
     id_usuario = @registroconsultum.citum.usuario.id
-    obj_historia = Historia_Clinica.find_by_id(id_usuario)
+    obj_historia = HistoriaClinica.find_by_id(id_usuario)
 
     id_registro_consulta = @registroconsultum.id
-    lst_diagnostico = DiagnosticoXRegistroConsultum.where("es_cronica"="1" AND "registro_consultum_id"=id_registro_consulta )
-    lst_diagnostico
+    lst_diagnostico = DiagnosticoXRegistroConsultum.where("registro_consultum_id":id_registro_consulta).rewhere("es_cronica":1)
+    
+    for i in lst_diagnostico
+      a = EnfermedadCronica.create("patologium_id":i.patologium_id, "historia_clinica_id":obj_historia.id)
+      a.save!
+    end
 
-    ##ACA HAY UN EERROR DE WHERE
   end
 
   private
@@ -54,15 +77,27 @@ class RegistroConsultaController < ApplicationController
       @registroconsultum = RegistroConsultum.find(params[:id])
     end
 
+    #Devuelve el diccionaro de antecedentes
     def get_antecedentes_pacientes
+      id_usuario = @registroconsultum.citum.usuario.id
+      obj_historia = HistoriaClinica.find_by_usuario_id(id_usuario)
+      lst_enfermedades_cronicas = EnfermedadCronica.where("historia_clinica_id":obj_historia.id)
+
       id_especialidad = @registroconsultum.citum.horario.usuario.especialidad.id
       lst_all_antecedentes = AntecedentesXEspecialidad.where("especialidad_id":id_especialidad)
-      lst_codigos = {}
+      
+      lst_codigos_antecedentes = {}
       for i in lst_all_antecedentes
         obj_i = Patologium.find_by_id(i.patologium_id)
-        lst_codigos.append(obj_i.nombre_algoritmo)
+        lst_codigos_antecedentes[obj_i.nombre_algoritmo] = 1 #1 significa que no tiene ese antecedente
+        for j in lst_enfermedades_cronicas
+          obj_j = Patologium.find_by_id(j.patologium_id)
+          if (obj_i == obj_j) then
+            lst_codigos_antecedentes[obj_i.nombre_algoritmo] = 0
+          end
+        end
       end
-      lst_codigos
+      lst_codigos_antecedentes
     end
 
     #Devuelve el diccionario de codigos de medicamentos
@@ -131,8 +166,8 @@ class RegistroConsultaController < ApplicationController
     def paciente_params
       body = {
         paciente: {
-          "sistema_medico": @registroconsultum.citum.horario.usuario.especialidad,
-          "antecedentes": get_medicamentos_codigos,
+          "sistema_medico": @registroconsultum.citum.horario.usuario.especialidad.nombre,
+          "antecedentes": get_antecedentes_pacientes,
           "medicamentos": get_medicamentos_codigos,
           "estados_medicamentos": get_medicamentos_estados,
           "diagnostico": get_patologia_codigos,

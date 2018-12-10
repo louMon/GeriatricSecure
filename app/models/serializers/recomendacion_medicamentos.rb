@@ -3,7 +3,7 @@ class RecomendacionMedicamentosSerializer
   def initialize(args = {})
   end
 
-  def perfil_paciente params
+  def create_perfil_paciente params
     body = {
       user: {
         "sistema_medico": params["sistema_medico"],
