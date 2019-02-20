@@ -1,0 +1,13 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-12">
+      <h1>Relación de Horarios</h1>
+  </div>
+  <div class="ibox-content">
+    <%= link_to 'Nuevo Horario', new_horario_path, class: "btn btn-primary pull-right" %>
+  </div>
+</div>
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+  <%= render 'horarios_table', horarios: @horarios %>
+</div>

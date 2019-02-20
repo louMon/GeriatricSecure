@@ -24,29 +24,27 @@ class RegistroConsultaController < ApplicationController
   def update
     if @registroconsultum.update(registro_consultum_params)
       ap 'se guardo exitosamente'
-      #@registroconsultum.citum.completar_receta 
-      save_to_cronic
+      @registroconsultum.citum.completar_receta 
+      #save_to_cronic
       #Aca falta la llamada al API
 
-      begin
-        options = {
-          'end_point': 'processmedication/' + params["id"],
-          'token': cookies[:session_token]
-        }
-        body = RecomendacionMedicamentosSerializer.new().create_perfil_paciente(user_params)
-        response = ApiService.new().put(body, options)
-        if response[:status] == 200
-          #redirect_to web_users_path
-          #redirect_to preview_recetum_path(@registroconsultum.citum.recetum), :notice =>"La consulta fue guardada exitosamente"
-        else
-          flash.now[:success] = 'A ocurrido un error'
-          render :new
-        end   
-      rescue Exception => e
-        render 'errors/400'
-      end
+      #uri = URI.parse("http://127.0.0.1:5000/processmedication")
+      #header = {'Content-Type': 'application/json'}
+      #user = paciente_params
+      #ap 'Luego del user'
+      #ap user
 
-      #redirect_to preview_recetum_path(@registroconsultum.citum.recetum), :notice =>"La consulta fue guardada exitosamente"
+      #http = Net::HTTP.new(uri.host, uri.port)
+      #request = Net::HTTP::Post.new(uri.request_uri, header)
+
+      #request.body = user.to_json
+      #ap 'Impriendo el request'
+      #ap request.body
+
+      #ap 'Send the request'
+      #response = http.request(request)
+
+      redirect_to preview_recetum_path(@registroconsultum.citum.recetum), :notice =>"La consulta fue guardada exitosamente"
     else 
       render :edit
     end
@@ -61,8 +59,10 @@ class RegistroConsultaController < ApplicationController
     lst_diagnostico = DiagnosticoXRegistroConsultum.where("registro_consultum_id":id_registro_consulta).rewhere("es_cronica":1)
     
     for i in lst_diagnostico
-      a = EnfermedadCronica.create("patologium_id":i.patologium_id, "historia_clinica_id":obj_historia.id)
-      a.save!
+      if(obj_historia!=null) then
+        a = EnfermedadCronica.create("patologium_id":i.patologium_id, "historia_clinica_id":obj_historia.id)
+        a.save!
+      end
     end
 
   end
@@ -165,16 +165,14 @@ class RegistroConsultaController < ApplicationController
 
     def paciente_params
       body = {
-        paciente: {
-          "sistema_medico": @registroconsultum.citum.horario.usuario.especialidad.nombre,
-          "antecedentes": get_antecedentes_pacientes,
-          "medicamentos": get_medicamentos_codigos,
-          "estados_medicamentos": get_medicamentos_estados,
-          "diagnostico": get_patologia_codigos,
-          "pesos_diagnostico": get_patologia_pesos
-        }
+          sistema_medico: @registroconsultum.citum.horario.usuario.especialidad.nombre,
+          antecedentes: get_antecedentes_pacientes,
+          medicamentos: get_medicamentos_codigos,
+          estados_medicamentos: get_medicamentos_estados,
+          diagnostico: get_patologia_codigos,
+          pesos_diagnostico: get_patologia_pesos
       }
-      paciente
+      body
     end
 
 end

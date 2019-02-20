@@ -2,7 +2,14 @@ class HistoriaClinicasController < ApplicationController
   
   before_action :set_historia_clinica, only: [:show, :edit, :update]
 
+  def index
+
+  end
+
   def show
+    @historia_clinica.usuario
+    @signos_vital
+    @diagnostico_x_registro_consultum
   end
 
   def edit

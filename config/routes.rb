@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :registro_consulta
   resources :historia_clinicas
   resources :receta
+  resources :horarios
   
   get 'receta/:id/preview' => 'receta#preview', as: :preview_recetum
 

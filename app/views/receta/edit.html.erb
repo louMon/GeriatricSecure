@@ -59,9 +59,25 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <%= f.fields_for :prescripcion do |r| %>
-                                                    <%= render 'prescripcion',f: r %>
-                                                <% end %>
+                                                <tr>
+                                                    <td>Bisoprolol</td>
+                                                    <td>5mg</td>
+                                                    <td>Tableta</td>
+                                                    <td>Oral</td>
+                                                    <td>-</td>
+                                                    <td>Cada 12 horas</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Amlodipino</td>
+                                                    <td>10mg</td>
+                                                    <td>Tableta</td>
+                                                    <td>Oral</td>
+                                                    <td>10</td>
+                                                    <td>Cada 24 horas</td>
+                                                </tr>
+                                                <%#= f.fields_for :prescripcion do |r| %>
+                                                    <%#= render 'prescripcion',f: r %>
+                                                <%# end %>
                                             </tbody>
                                         </table>
                                     </div>
@@ -70,8 +86,8 @@
                         </div>
                         <div class="ibox-content">
                             <div class="pull-right">
-                                <button class="btn btn-white" type="submit">Regresar</button>
-                                <button class="btn btn-primary" type="submit">Guardar</button>
+                                <%= link_to 'Regresar'.html_safe, cita_path, class: "btn btn-white", data: { "toggle" => "tooltip" }%>
+                                <%= link_to 'Guardar'.html_safe, cita_path, class: "btn btn-primary", data: { "toggle" => "tooltip" }%>
                             </div>
                         </div>
                     </div>

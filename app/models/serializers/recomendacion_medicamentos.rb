@@ -5,21 +5,18 @@ class RecomendacionMedicamentosSerializer
 
   def create_perfil_paciente params
     body = {
-      user: {
         "sistema_medico": params["sistema_medico"],
         "antecedentes": params["antecedentes"],
         "medicamentos": params["medicamentos"],
         "estados_medicamentos": params["estados_medicamentos"],
         "diagnostico": params["diagnostico"],
         "pesos_diagnostico": params["pesos_diagnostico"]
-      }
     }
+    ap 'Entro al create_prefil_paciente'
+    ap body
     body    
   end
 
-  def user params
-    user_object(params["user"])
-  end
 
   private
 

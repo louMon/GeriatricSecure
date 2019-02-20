@@ -39,10 +39,10 @@ class Citum < ApplicationRecord
 
   def self.buscando_citas current_usuario
     if current_usuario.categoria=='Paciente' then
-      cita_por_usuario(current_usuario)
+      cita_por_usuario(current_usuario).order(:estado)
     else
       horario = Horario.horarios_por_usuario(current_usuario)
-      cita_por_horario_usuario(horario)
+      cita_por_horario_usuario(horario).order(:estado)
     end
   end
 
